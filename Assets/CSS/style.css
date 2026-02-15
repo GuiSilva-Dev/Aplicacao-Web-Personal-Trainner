@@ -1726,7 +1726,7 @@ div .faq p {
   overflow: hidden;
 
   /* Dica: 'ease-out' costuma ser mais agradável para elementos que "entram/abrem" na tela */
-  transition: max-height 0.4s ease-out;
+  transition: max-height 0.2s ease-in-out;
 
   /* Boa prática: adicionar altura de linha para textos longos */
   line-height: 1.6;
@@ -1745,7 +1745,7 @@ div .faq p {
 .post-content.visible {
   max-height: 500px;
   /* Valor suficiente para o conteúdo */
-  transition: max-height 0. 4s ease-in-out;
+  transition: max-height 0.2s ease-in;
   
 }
 
