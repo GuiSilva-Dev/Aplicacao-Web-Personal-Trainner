@@ -706,7 +706,7 @@ textarea {
 }
 
 .formulario textarea {
-max-width: auto;
+  max-width: auto;
   height: 100px;
 }
 
@@ -1746,7 +1746,7 @@ div .faq p {
   max-height: 500px;
   /* Valor suficiente para o conteúdo */
   transition: max-height 0.2s ease-in;
-  
+
 }
 
 .img-footer-pessoal {
@@ -1832,19 +1832,76 @@ div .faq p {
 @media (min-width: 1024px) and (max-width: 1440px) {
 
   .secao-1 h1 {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
+  }
+
+  .modal {
+    width: 50%;
+    height: auto;
+  }
+
+  .secao-2 h1 {
+    font-size: 2.2rem;
+  }
+
+  .secao-2 p {
+    font-size: 1.2rem;
   }
 
   .txt-pilha1,
   .txt-pilha2,
   .txt-pilha3,
   .txt-pilha4 {
-    width: 95%;
+    width: 85%;
+  }
+
+  .txt-pilha1 h1,
+  .txt-pilha2 h1,
+  .txt-pilha3 h1,
+  .txt-pilha4 h1 {
+    font-size: 1.4rem;
+  }
+
+  .txt-pilha1 p,
+  .txt-pilha2 p,
+  .txt-pilha3 p,
+  .txt-pilha4 p {
+    font-size: 13px;
+  }
+
+  .linha-bene3 {
+    top: -95%;
+  }
+
+  .linha-bene2 {
+    margin-left: -20%;
+  }
+
+  .linha-bene4 {
+    left: 95%;
+  }
+
+  /*S3*/
+  .secao-3 h1 {
+    font-size: 2.2rem;
+  }
+
+  .secao-3 h2 {
+    font-size: 1.2rem;
+    padding: 0 0 1rem 0;
   }
 
   .container-consul .box {
     width: 100%;
     height: auto;
+  }
+
+  .container-consul .box .box-consultoria h3{
+    font-size: 1.8rem;
+  }
+
+  .secao-3 .box-consultoria h3 p {
+    font-size: 12px;
   }
 
   .box-consultoria {
@@ -1856,14 +1913,54 @@ div .faq p {
     height: auto;
   }
 
+  .linha1 {
+    top: 22%;
+  }
+
+  .linha2 {
+    top: 41%;
+  }
+
+  .linha3 {
+    top: 59.8%;
+  }
+
+  .linha4 {
+    top: 78.8%;
+  }
+
   /*S-4*/
+  .logo h1 {
+    font-size: 1.7rem;
+  }
+
+  .logo h2 {
+    font-size: 1.2rem;
+  }
+
   .card-list ul li,
   .card-list-2 ul li {
-    font-size: 15px;
+    font-size: 11px;
   }
 
   .m2 {
     max-width: 100%;
+  }
+
+  .secao-imc h1 {
+    font-size: 1rem;
+  }
+
+  .dicas-muscle h1 {
+    font-size: 1.3rem;
+  }
+
+  .dicas-muscle h2 {
+    font-size: 1rem;
+  }
+
+  .secao-imc p {
+    font-size: 1.5rem;
   }
 
   .img-footer img {
@@ -1882,7 +1979,7 @@ div .faq p {
     transform: translateX(25%);
     color: var(--color-esmerald);
     padding-bottom: 50px;
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-weight: 550;
   }
 
@@ -1893,7 +1990,51 @@ div .faq p {
   }
 
   .geral-list p {
-    font-size: 15px;
+    font-size: 11px;
+  }
+
+  /* Ajustes da Seção IMC para Notebook */
+  .secao-imc {
+    padding: 30px;
+  }
+
+  .container-imc {
+    width: 320px;
+    height: 420px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    height: 35px;
+    margin-bottom: 10px;
+  }
+
+  .input {
+    width: 280px;
+    height: 40px;
+  }
+
+  .input label {
+    font-size: 1.1rem;
+  }
+
+  .input input {
+    width: 160px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
+
+  .secao-imc button {
+    width: 280px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .result {
+    width: 280px;
+    height: 80px;
+    font-size: 1.1rem;
+    padding: 10px;
   }
 }
 
@@ -1969,12 +2110,12 @@ div .faq p {
   }
 
   .txt-topo h1 {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
 
   }
 
   .txt-topo h2 {
-    font-size: 1.3rem;
+    font-size: 0.95rem;
   }
 
   .img-pessoal img {
@@ -2003,12 +2144,12 @@ div .faq p {
   }
 
   .txt-beneficios h1 {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
   }
 
   .txt-beneficios p {
     padding: 0 0 5rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .container-Beneficios {
@@ -2142,15 +2283,15 @@ div .faq p {
 
   /* Seção Consultoria */
   .secao-3 {
-    padding: 0 0 10rem;
+    padding: 1.5rem 0 0;
   }
 
   .secao-3 h1 {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
   }
 
   .secao-3 h2 {
-    font-size: 1.3rem;
+    font-size: 0.95rem;
   }
 
   .container-consul {
@@ -2176,14 +2317,14 @@ div .faq p {
   }
 
   .container-consul .box div h3 {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
     margin-left: 0;
     text-align: center;
   }
 
   .container-consul .box div p {
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     text-align: center;
   }
 
@@ -2195,16 +2336,13 @@ div .faq p {
   }
 
   /* Prós e Contras */
-  .secao-4 {
-    margin-top: -300px;
-  }
 
   .secao-4 h1 {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
 
   .secao-4 h2 {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .content-complete {
@@ -2246,11 +2384,11 @@ div .faq p {
   }
 
   .dicas-muscle h1 {
-    font-size: 1.7rem;
+    font-size: 1.1rem;
   }
 
   .dicas-muscle h2 {
-    font-size: 1.2rem;
+    font-size: 0.85rem;
     padding: 15px;
   }
 
@@ -2335,7 +2473,7 @@ div .faq p {
   }
 
   div .faq p {
-    font-size: 2rem;
+    font-size: 1.3rem;
     left: 0;
     transform: translateX(0);
   }
