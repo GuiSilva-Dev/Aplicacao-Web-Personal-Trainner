@@ -1,5 +1,5 @@
 // Menu Lateral Mobile
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const menuLateral = document.getElementById('menu-lateral');
     const menuOverlay = document.getElementById('menu-overlay');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Abrir menu ao clicar no botão hamburger
     if (hamburgerMenu) {
-        hamburgerMenu.addEventListener('click', function(e) {
+        hamburgerMenu.addEventListener('click', function (e) {
             e.stopPropagation();
             openMenu();
         });
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fechar menu ao clicar em um link
     menuLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             closeMenu();
             // Scroll suave para a seção
             const href = this.getAttribute('href');
@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Fechar menu ao pressionar ESC
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && menuLateral.classList.contains('active')) {
             closeMenu();
         }
     });
 
     // Prevenir scroll quando menu está aberto
-    menuLateral.addEventListener('touchmove', function(e) {
+    menuLateral.addEventListener('touchmove', function (e) {
         if (this.scrollTop === 0 && e.touches[0].clientY > 0) {
             e.preventDefault();
         }

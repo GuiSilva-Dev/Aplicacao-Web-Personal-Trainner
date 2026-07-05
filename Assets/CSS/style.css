@@ -2336,6 +2336,9 @@ div .faq p {
   }
 
   /* Prós e Contras */
+  .secao-4 {
+    margin-top: -200px;
+  }
 
   .secao-4 h1 {
     font-size: 1.3rem;
