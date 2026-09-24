@@ -1717,23 +1717,26 @@ div .faq p {
   /*(número mágico). Use 100% e controle o espaço via padding no pai ou margem. */
   width: 100%;
 
-  /*'ch' (caracteres) ou 'rem'. 
+  /*'ch' (caracteres) ou 'rem'.
      65ch é considerado o tamanho ideal para leitura (aprox. 65 letras por linha). */
   max-width: 65ch;
 
-  /* --- LÓGICA DO ACORDEÃO (MANTIDA) --- */
-  max-height: 0;
-  overflow: hidden;
-
-  /* Dica: 'ease-out' costuma ser mais agradável para elementos que "entram/abrem" na tela */
-  transition: max-height 0.2s ease-in-out;
+  /* --- LÓGICA DO ACORDEÃO --- */
+  /* grid-template-rows em vez de max-height: evita recalcular o layout do texto
+     a cada frame da transição (causa da lentidão no mobile). */
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
 
   /* Boa prática: adicionar altura de linha para textos longos */
   line-height: 1.6;
+}
 
-  /* display: block é o padrão de divs, pode ser omitido se quiser limpar o código, 
-     mas não faz mal deixar explícito. */
-  display: block;
+/* O overflow precisa ficar num wrapper SEM padding: padding no próprio item
+   sempre conta na altura mínima da grid-row e impede o colapso total a 0. */
+.post-content-inner {
+  overflow: hidden;
+  min-height: 0;
 }
 
 .post-content p {
@@ -1743,10 +1746,7 @@ div .faq p {
 }
 
 .post-content.visible {
-  max-height: 500px;
-  /* Valor suficiente para o conteúdo */
-  transition: max-height 0.2s ease-in;
-
+  grid-template-rows: 1fr;
 }
 
 .img-footer-pessoal {
