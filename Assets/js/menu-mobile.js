@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuLinks = document.querySelectorAll('.menu-lateral-link');
     const body = document.body;
 
-    // Função para abrir o menu
+    // Abre o menu
     function openMenu() {
         menuLateral.classList.add('active');
         menuOverlay.classList.add('active');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         body.classList.add('menu-open');
     }
 
-    // Função para fechar o menu
+    // Fecha o menu
     function closeMenu() {
         menuLateral.classList.remove('active');
         menuOverlay.classList.remove('active');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         body.classList.remove('menu-open');
     }
 
-    // Abrir menu ao clicar no botão hamburger
+    // Abrir pelo botão
     if (hamburgerMenu) {
         hamburgerMenu.addEventListener('click', function (e) {
             e.stopPropagation();
@@ -31,21 +31,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Fechar menu ao clicar no botão fechar
+    // Fechar pelo botão
     if (menuClose) {
         menuClose.addEventListener('click', closeMenu);
     }
 
-    // Fechar menu ao clicar no overlay
+    // Fechar pelo overlay
     if (menuOverlay) {
         menuOverlay.addEventListener('click', closeMenu);
     }
 
-    // Fechar menu ao clicar em um link
+    // Fechar ao navegar
     menuLinks.forEach(link => {
         link.addEventListener('click', function () {
             closeMenu();
-            // Scroll suave para a seção
             const href = this.getAttribute('href');
             if (href.startsWith('#')) {
                 const targetElement = document.querySelector(href);
@@ -58,14 +57,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Fechar menu ao pressionar ESC
+    // Fechar com Escape
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && menuLateral.classList.contains('active')) {
             closeMenu();
         }
     });
 
-    // Prevenir scroll quando menu está aberto
+    // Evitar rolagem além dos limites do menu
     menuLateral.addEventListener('touchmove', function (e) {
         if (this.scrollTop === 0 && e.touches[0].clientY > 0) {
             e.preventDefault();

@@ -27,17 +27,17 @@
 </head>
 
 <body>
-    <!--BACKGROUND DA APLICAÇÃO-->
+    <!-- Fundo da página -->
     <div class="back-bottom">
-        <!--HEADER-->
+        <!-- Cabeçalho -->
         <header>
-            <!--HEADER-TOPO-->
+            <!-- Navegação principal -->
             <div class="header-topo" id="header-topo">
                 <div class="logo-topo" id="logo-topo">
                     <img src="Assets/img-web/js.png" alt="Logo Janaina Santos Personal Trainer" loading="lazy">
-                </div> <!--FIM LOGO-TOPO-->
+                </div>
 
-                <!-- Botão Hamburger para Mobile -->
+                <!-- Menu mobile -->
                 <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -55,7 +55,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div> <!--FIM MENU-TOPO-->
+                </div>
 
                 <div class="btn-contatos" id="btn-contatos">
                     <div class="card">
@@ -77,8 +77,8 @@
                             </svg>
                         </a>
                     </div>
-                </div><!--FIM BTN-CONTATO-->
-            </div><!--FIM HEADER-TOPO-->
+                </div>
+            </div>
         </header>
 
         <!-- Menu Lateral Mobile -->
@@ -98,7 +98,7 @@
         </nav>
 
         <main id="conteudo-principal">
-        <section><!--INICIO SECAO-1-->
+        <section>
             <div class="secao-1" id="secao-1">
                 <div class="img-secao" id="img-secao">
                     <div class="txt-topo" id="txt-topo">
@@ -131,13 +131,13 @@
                                         <form action="https://formsubmit.co/janaina1519@yahoo.com.br" method="POST" target="_blank">
                                             <input type="text" name="Nome" placeholder="Digite seu nome completo"
                                                 required autocomplete="off">
-                                            <input type="numero" name="Telefone" placeholder="11-99999-9999" required
+                                            <input type="tel" name="Telefone" placeholder="11-99999-9999" required
                                                 autocomplete="off">
                                             <input type="email" name="Email" placeholder="Seu melhor e-mail" required
                                                 autocomplete="off">
                                             <textarea name="Mansagem" id="mensagem" placeholder="Digite sua mensagem"
                                                 required autocomplete="off"></textarea>
-                                            <button
+                                            <button id="enviar" type="submit" disabled
                                                 class="overflow-hidden relative w-32 p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group">
                                                 ENVIAR
                                                 <span
@@ -171,16 +171,16 @@
                                 </button>
                             </a>
 
-                        </div><!--FIM BTN-->
-                    </div><!--FIM TXT-TOPO-->
+                        </div>
+                    </div>
                     <div class="img-pessoal" id="img-pessoal">
                         <img loading="lazy">
                     </div>
 
-                </div><!--FIM IMG-SECAO-->
+                </div>
 
-            </div><!--FIM SECTION-->
-        </section><!--FIM DA SECTION-->
+            </div>
+        </section>
         <section>
             <div class="secao-2" id="secao-2">
                 <div class="container-Beneficios">
@@ -227,11 +227,11 @@
 
                     </article>
                 </div>
-            </div><!--FIM SECAO-2-->
+            </div>
         </section>
         <section>
 
-            <!--*CONSULTORIA-->
+            <!-- Consultoria -->
             <section>
                 <div data-aos="fade-up" data-aos-anchor-placement="
                 bottom-bottom" data-aos-offset="200" class="secao-3" id="secao-3">
@@ -317,10 +317,10 @@
                             </div>
                         </div>
                     </div>
-                </div><!--FIM SECAO-3-->
+                </div>
             </section>
 
-            <!--*SEÇÃO 4-->
+            <!-- Planos -->
             <section>
                 <div data-aos="fade-up" data-aos-anchor-placement="
                 center-botto" data-aos-offset="0" class="secao-4" id="secao-4">
@@ -443,8 +443,8 @@
 
                                         </ul>
                                         <hr class="linha">
-                                    </div><!--FIM CARD-LIST-->
-                                </div><!--FIM CARD-CONTENT-->
+                                    </div>
+                                </div>
 
                                 <div class="card-content-2">
                                     <div class="card-list-2">
@@ -539,15 +539,15 @@
                                                     </polygon>
                                                 </svg>Agenda flexível (presencial ou online)</li>
                                         </ul>
-                                    </div><!--FIM CARD-LIST-2-->
-                                </div><!--FIM CARD-CONTENT-2-->
+                                    </div>
+                                </div>
 
-                            </div><!--FIM CONTENT-COMPLETE-2-->
+                            </div>
 
-                        </div><!--FIM LOGO-->
+                        </div>
 
 
-                    </div><!--FIM M2-->
+                    </div>
 
                 </div>
                 <div class="flex justify-center py-10">
@@ -569,10 +569,10 @@
                                 class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">Fazer
                                 Consultoria</span>
                         </button></a>
-                </div><!--*FIM SECAO-->
-            </section><!--*FIM SECAO-4-->
+                </div>
+            </section>
 
-            <!--*SEÇÃO IMC-->
+            <!-- Exercícios e IMC -->
             <section>
                 <div data-aos="fade-up" data-aos-anchor-placement="
                 bottom-bottom" data-aos-offset="50" class="secao-5" id="secao-5">
@@ -580,11 +580,10 @@
                         <h1>Você sabe os 3 melhores exercícios para cada musculo?</h1>
                         <h2>Veja agora mesmo com a personal!</h2>
 
-                        <!-- Seleção de grupo muscular -->
+                        <!-- Grupo muscular -->
                         <label>
                             Escolha um grupo muscular:
                             <select id="muscle">
-                                <!-- Cada opção tem o valor que corresponde a uma chave do objeto exercises -->
                                 <option value="chest">Peito</option>
                                 <option value="back">Costas</option>
                                 <option value="biceps">Bíceps</option>
@@ -596,9 +595,8 @@
                         </label>
                         <button id="load">Carregar</button>
 
-                        <!-- Container onde os exercícios serão exibidos -->
                         <div id="list" class="grid"></div>
-                    </div><!--FIM DICAS-->
+                    </div>
                     <div class="secao-imc">
                         <h1>Saiba em segundos como está <span>sua saúde com o IMC!</span> </h1>
                         <div class="container-imc">
@@ -621,9 +619,9 @@
                         </div>
                     </div>
                 </div>
-            </section><!--FIM SECAO-5-->
+            </section>
 
-            <!--*SEÇÃO FAQ-->
+            <!-- Perguntas frequentes -->
             </main>
             <section>
                 <div class="footer" id="footer">
@@ -676,7 +674,7 @@
                             <div class="linha-h"></div>
                         </div>
                         <div class="list-footer4">
-                            <p class="post-summary"><span>04.</span>Quanto tempo começo a ver resultados no meu corpo?
+                            <p class="post-summary"><span>04.</span>Quanto tempo começo a ver resultados corporais?
                             </p>
                             <button class="read-more-4">&#9660;</button>
 

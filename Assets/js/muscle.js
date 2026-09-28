@@ -1,4 +1,4 @@
-// Objeto que contém exercícios pré-definidos para cada grupo muscular
+// Exercícios por grupo muscular
 const exercises = {
 
   chest: [
@@ -39,20 +39,19 @@ const exercises = {
   ]
 
 };
-// Referências para elementos do DOM
+// Elementos da interface
 const listEl = document.getElementById('list');
 const btn = document.getElementById('load');
 const select = document.getElementById('muscle');
 
-// Função que exibe os exercícios do grupo muscular selecionado
+// Exibe os exercícios selecionados
 function showExercises(muscle) {
-  const arr = exercises[muscle]; // pega o array do músculo escolhido
+  const arr = exercises[muscle];
   if (!arr || arr.length === 0) {
     listEl.innerHTML = "Nenhum exercício encontrado para esse músculo.";
     return;
   }
 
-  // Cria os cards de cada exercício com nome e imagem
   listEl.innerHTML = arr.map(e => `
     <div class="gif">
       <strong>${e.name}</strong><br/>
@@ -61,8 +60,8 @@ function showExercises(muscle) {
   `).join('');
 }
 
-// Evento do botão para carregar os exercícios do músculo selecionado
+// Carrega os exercícios selecionados
 btn.addEventListener('click', () => showExercises(select.value));
 
-// Carrega inicialmente o grupo selecionado por padrão
+// Exibe o grupo inicial
 showExercises(select.value); 

@@ -1,41 +1,39 @@
-//carrega o arquivo html
 document.addEventListener('DOMContentLoaded', function () {
 
     if (window.location.hash !== "") {
         window.location.hash = '';
     }
 
-    //LOGICA DO BOTAO DE VOLTAR AO TOPO
+    // Botão voltar ao topo
     const BackUpButton = document.getElementById('BackUpButton');
 
     function backButton() {
-        //vaariavel
         const scrollPosition = window.scrollY;
         if (
-            scrollPosition > 100//Se o usuário rolar mais de 100px, o botão aparece:
+            scrollPosition > 100
         ) {
-            BackUpButton.style.display = 'flex';//torna o botão visível.
+            BackUpButton.style.display = 'flex';
             setTimeout(() => {
                 BackUpButton.style.opacity = '1';
-            }, 10);//depois de 10ms, criando um efeito de transição suave.
+            }, 10);
         } else {
             BackUpButton.style.opacity = '0';//botão começa a sumir.
             setTimeout(() => {
-                BackUpButton.style.display = 'none';//após 500ms, botão desaparece da página.
+                BackUpButton.style.display = 'none';
             },)
         }
     }
 
-    document.addEventListener('scroll', backButton);//Chama a função backButton() toda vez que o usuário rola a página.
+    document.addEventListener('scroll', backButton);
 
     BackUpButton.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });//a página rola suavemente até o topo
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-/**BOTAO WHATSAPP**/
+// Botão WhatsApp
 const btnWhats = document.getElementById('btnWhats');
 
-/*FUNÇÃO DE POSICAO DE VISIBILIDADE DO BTN*/
+// Controla a visibilidade do botão
 function whats() {
     const scrollPosition = window.scrollY;
     if( scrollPosition > 100){
@@ -50,7 +48,7 @@ function whats() {
         },)
     }
 }
-/*FUNÇÃO DE CLICK E REDIRECIONAMENTO*/
+// Abre a conversa no WhatsApp
 document.addEventListener('scroll', whats);
 
 btnWhats.addEventListener('click', function (){

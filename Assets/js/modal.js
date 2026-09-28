@@ -10,21 +10,23 @@ function openModal() {
     })
 }
 
-//EVENTO DE CORES NA BORDA DOS INPUTS E TEXTAREA*/
 
-// pega todos os inputs e textarea do formulário
+// Destaque dos campos do formulário
+const buttonSent = document.getElementById('enviar')
 const campos = document.querySelectorAll("form input, form textarea");
 
 campos.forEach(campo => {
-    // quando clicar no campo
     campo.addEventListener("focus", () => {
         campo.style.border = "2px solid #06d6a0";
         campo.style.outline = "none"; // tira o contorno padrão
     });
 
-    // quando sair do campo
     campo.addEventListener("blur", () => {
+        if (campo.value.trim() === "" ) { // verifica se o campo está vazio ou se é um número
+        campo.style.border = "1px solid #e20808"; // volta ao normal
+        } else {
         campo.style.border = "1px solid #ccc"; // volta ao normal
+        } 
     });
 });
 

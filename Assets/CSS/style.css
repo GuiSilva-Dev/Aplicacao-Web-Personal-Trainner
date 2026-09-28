@@ -708,6 +708,7 @@ textarea {
 .formulario textarea {
   max-width: auto;
   height: 100px;
+  padding: 5px;
 }
 
 .formulario input::placeholder {
@@ -1356,24 +1357,14 @@ textarea {
 .m2::before,
 .m2::after {
   --size: 5px;
-  /* Define uma variável CSS (custom property) que controla o "tamanho extra" da área do brilho */
+  /* Expansão do brilho */
   content: "";
-  /* Necessário para que os pseudo-elementos (::before e ::after) apareçam */
   position: absolute;
-  /* Faz os pseudo-elementos ficarem posicionados em relação ao elemento pai (.m2) */
-  /* Posiciona o pseudo-elemento um pouco para fora da borda do elemento */
   top: calc(var(--size) / -2);
   left: calc(var(--size) / -2);
-  /* Faz o pseudo-elemento ser maior que o .m2, adicionando "var(--size)" de cada lado */
   width: calc(100% + var(--size));
   height: calc(100% + var(--size));
-  /* Cria quatro gradientes radiais (um em cada canto do elemento):
-     - canto superior esquerdo → hsl(184, 93%, 60%) até transparente
-     - canto superior direito → verde (#06d6a0) até transparente
-     - canto inferior esquerdo → azul acinzentado (#77a8a8) até transparente
-     - canto inferior direito → bege claro (#f8ffe5) até transparente
-     O resultado é um "glow" colorido multicolorido nos cantos.
-  */
+    /* Gradientes dos cantos. */
   /*background: radial-gradient(circle at 0 0, hsla(184, 93%, 60%, 0.134), transparent),
     radial-gradient(circle at 100% 0, #06d69e00, transparent),
     radial-gradient(circle at 0 100%, #77a8a835, transparent),
@@ -1381,7 +1372,7 @@ textarea {
 }
 
 
-/*insere algo depois do conteúdo do elemento.*/
+/* Brilho interno */
 .m2::after {
   --size: 2px;
   /* Reduced inner glow size */
@@ -1713,27 +1704,18 @@ div .faq p {
 }
 
 .post-content {
-  /* --- LAYOUT E TAMANHO --- */
-  /*(número mágico). Use 100% e controle o espaço via padding no pai ou margem. */
   width: 100%;
 
-  /*'ch' (caracteres) ou 'rem'.
-     65ch é considerado o tamanho ideal para leitura (aprox. 65 letras por linha). */
   max-width: 65ch;
 
-  /* --- LÓGICA DO ACORDEÃO --- */
-  /* grid-template-rows em vez de max-height: evita recalcular o layout do texto
-     a cada frame da transição (causa da lentidão no mobile). */
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.25s ease;
 
-  /* Boa prática: adicionar altura de linha para textos longos */
   line-height: 1.6;
 }
 
-/* O overflow precisa ficar num wrapper SEM padding: padding no próprio item
-   sempre conta na altura mínima da grid-row e impede o colapso total a 0. */
+/* Mantém o acordeão recolhido. */
 .post-content-inner {
   overflow: hidden;
   min-height: 0;
@@ -1969,7 +1951,7 @@ div .faq p {
     height: 60%;
     /* Ocupa 60% da altura do pai */
     object-fit: cover;
-    /* MÁGICA: Corta o excesso para manter a proporção correta, sem esticar */
+    /* Recorta sem distorcer. */
     margin-left: -10%;
     display: block;
     /* Remove espaços brancos extras abaixo da imagem */
@@ -2250,7 +2232,7 @@ div .faq p {
     /* Adicionei scale(0.65) ao final do transform original */
     transform: translateX(-50%) rotate(45deg) scale(0.6);
 
-    /* Ajustes de posição para reaproximar do centro após encolher */
+    /* Corrige a posição após reduzir. */
     top: 50%;
     left: 15%;
   }
@@ -2606,7 +2588,7 @@ div .faq p {
     width: 100%;
     justify-content: center;
     display: none;
-    /* Esconde em mobile - pode ser adicionado ao menu lateral se necessário */
+    /* Oculto no mobile. */
   }
 
   /* Menu Lateral ajustes para mobile */
