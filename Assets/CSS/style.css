@@ -76,16 +76,16 @@ body {
   margin: 30px;
 }
 
-.menu-navegação {
+.menu-navegacao {
   margin: 60px;
 }
 
-.menu-navegação ul li {
+.menu-navegacao ul li {
   list-style-type: none;
   font-family: var(--font-grande);
 }
 
-.menu-navegação ul li a {
+.menu-navegacao ul li a {
   padding: 10px 10px;
   text-decoration: none;
   font-weight: 600;
@@ -100,8 +100,8 @@ body {
   background-position: bottom;
 }
 
-.menu-navegação ul li a:hover,
-.menu-navegação ul li a:focus-visible {
+.menu-navegacao ul li a:hover,
+.menu-navegacao ul li a:focus-visible {
   /* Expande o gradiente até preencher */
   background-size: 100% 100%;
   color: #111;
@@ -2037,18 +2037,18 @@ div .faq p {
     margin: 15px;
   }
 
-  .menu-navegação {
+  .menu-navegacao {
     margin: 20px 0;
   }
 
-  .menu-navegação ul li {
+  .menu-navegacao ul li {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
   }
 
-  .menu-navegação ul li a {
+  .menu-navegacao ul li a {
     font-size: 0.9rem;
     padding: 8px 12px;
   }
@@ -2558,18 +2558,18 @@ div .faq p {
     align-items: center;
   }
 
-  .menu-navegação {
+  .menu-navegacao {
     margin: 15px 0;
     width: 100%;
 
   }
 
-  .menu-navegação ul li {
+  .menu-navegacao ul li {
     flex-direction: column;
     gap: 8px;
   }
 
-  .menu-navegação ul li a {
+  .menu-navegacao ul li a {
     font-size: 0.85rem;
     padding: 6px 10px;
     display: block;
@@ -3140,7 +3140,7 @@ div .faq p {
     font-size: 1rem;
   }
 
-  .menu-navegação ul li a {
+  .menu-navegacao ul li a {
     font-size: 0.75rem;
     padding: 5px 8px;
   }
