@@ -7,8 +7,8 @@ function imc() {
     const resultado = document.getElementById('resultado');
 
     if (nome !== "" && altura !== "" && peso !== "") {
-
-        const valorIMC = (peso / (altura * altura)).toFixed(2);
+        const alturaCm = altura / 100;
+        const valorIMC = (peso / (alturaCm * alturaCm)).toFixed(2);
 
         let classificacao = '';
 
@@ -17,7 +17,7 @@ function imc() {
 
         } else if (valorIMC < 25) {
 
-            classificacao = 'Peso ideal, Parabéns';
+            classificacao = 'Esta com peso ideal';
         } else if (valorIMC < 30) {
 
             classificacao = 'Esta levemente acima do peso';
