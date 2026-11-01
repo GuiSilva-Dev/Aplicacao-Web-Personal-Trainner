@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -17,8 +17,17 @@
     <meta property="og:site_name" content="Janaina Santos Personal Trainer">
     <meta property="og:url" content="https://personal-janaina-santos.netlify.app/">
     <link rel="canonical" href="https://personal-janaina-santos.netlify.app/">
+    <!-- Conexões antecipadas com as CDNs usadas -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.cdnfonts.com">
+    <!-- Imagem de fundo do topo (#img-secao no style.css) -->
+    <link rel="preload" href="/Assets/img-web/foto-pessoal.webp" as="image" type="image/webp" fetchpriority="high">
+    <!-- Fontes carregadas em paralelo (antes vinham por @import dentro do style.css) -->
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/young-serif">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/tt-hoves-pro-trial">
     <link rel="stylesheet" href="Assets/CSS/style.css">
-    <link rel="preload" href="/Assets/img-web/foto-pessoal.png" as="image">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="icon" href="Assets/img-web/js-Photoroom2.png">
@@ -34,25 +43,25 @@
             <!-- Navegação principal -->
             <div class="header-topo" id="header-topo">
                 <div class="logo-topo" id="logo-topo">
-                    <img src="Assets/img-web/js.png" alt="Logo Janaina Santos Personal Trainer" loading="lazy">
+                    <img src="Assets/img-web/js.png" alt="Logo Janaina Santos Personal Trainer" width="500" height="171" decoding="async">
                 </div>
 
                 <!-- Menu mobile -->
-                <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-lateral">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
 
                 <div class="menu-topo" id="menu-topo">
-                    <nav class="menu-navegacao"aria-label="Navegação principal">
+                    <nav class="menu-navegacao" aria-label="Navegação principal">
+                        <!-- Um <li> por link; os rótulos seguem a ordem das seções da página -->
                         <ul>
-                            <li>
-                                <a href="#secao-2">BENEFÍCIOS</a>
-                                <a href="#secao-3">AVALIAÇÕES</a>
-                                <a href="#secao-4">CONSULTORIA</a>
-                                <a href="#secao-5">DICAS</a>
-                            </li>
+                            <li><a href="#secao-2">BENEFÍCIOS</a></li>
+                            <li><a href="#secao-3">CONSULTORIA</a></li>
+                            <li><a href="#planos">PLANOS</a></li>
+                            <li><a href="#secao-5">DICAS</a></li>
+                            <li><a href="#faq">DÚVIDAS</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -60,16 +69,16 @@
                 <div class="btn-contatos" id="btn-contatos">
                     <div class="card">
                         <span>Social</span>
-                        <a class="social-link" href="https://wa.me/5511974895522" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                        <a class="social-link" href="https://wa.me/5511974895522" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
                                 viewBox="0 0 128 128">
                                 <path
                                     d="M 64 2 C 29.8 2 2 29.8 2 64 C 2 74.5 4.5992188 84.800391 9.6992188 93.900391 L 4.4003906 113.30078 C 3.5003906 116.40078 4.3992188 119.60039 6.6992188 121.90039 C 8.9992188 124.20039 12.200781 125.10078 15.300781 124.30078 L 35.5 119 C 44.3 123.6 54.099609 126 64.099609 126 C 98.299609 126 126.09961 98.2 126.09961 64 C 126.09961 47.4 119.7 31.899219 108 20.199219 C 96.2 8.4992187 80.6 2 64 2 z M 64 8 C 79 8 93.099609 13.800391 103.59961 24.400391 C 114.19961 35.000391 120.1 49.1 120 64 C 120 94.9 94.9 120 64 120 C 54.7 120 45.399219 117.59922 37.199219 113.19922 C 36.799219 112.99922 36.300781 112.80078 35.800781 112.80078 C 35.500781 112.80078 35.3 112.80039 35 112.90039 L 13.699219 118.5 C 12.199219 118.9 11.200781 118.09922 10.800781 117.69922 C 10.400781 117.29922 9.6 116.30078 10 114.80078 L 15.599609 94.199219 C 15.799609 93.399219 15.700781 92.600391 15.300781 91.900391 C 10.500781 83.500391 8 73.8 8 64 C 8 33.1 33.1 8 64 8 z M 64 17 C 38.1 17 17 38 17 64 C 17 72.3 19.200781 80.4 23.300781 87.5 C 24.900781 90.3 25.3 93.599219 24.5 96.699219 L 21.599609 107.19922 L 32.800781 104.30078 C 33.800781 104.00078 34.800781 103.90039 35.800781 103.90039 C 37.800781 103.90039 39.8 104.40039 41.5 105.40039 C 48.4 109.00039 56.1 111 64 111 C 89.9 111 111 89.9 111 64 C 111 51.4 106.09922 39.599219 97.199219 30.699219 C 88.399219 21.899219 76.6 17 64 17 z M 43.099609 36.699219 L 45.900391 36.699219 C 47.000391 36.699219 48.099219 36.799219 49.199219 39.199219 C 50.499219 42.099219 53.399219 49.399609 53.699219 50.099609 C 54.099219 50.799609 54.300781 51.699219 53.800781 52.699219 C 53.300781 53.699219 53.100781 54.299219 52.300781 55.199219 C 51.600781 56.099219 50.699609 57.100781 50.099609 57.800781 C 49.399609 58.500781 48.6 59.300781 49.5 60.800781 C 50.4 62.300781 53.299219 67.1 57.699219 71 C 63.299219 76 68.099609 77.600781 69.599609 78.300781 C 71.099609 79.000781 71.900781 78.900391 72.800781 77.900391 C 73.700781 76.900391 76.5 73.599609 77.5 72.099609 C 78.5 70.599609 79.500781 70.900391 80.800781 71.400391 C 82.200781 71.900391 89.400391 75.499219 90.900391 76.199219 C 92.400391 76.899219 93.399219 77.300391 93.699219 77.900391 C 94.099219 78.700391 94.100391 81.599609 92.900391 85.099609 C 91.700391 88.499609 85.700391 91.899609 82.900391 92.099609 C 80.200391 92.299609 77.699219 93.300391 65.199219 88.400391 C 50.199219 82.500391 40.7 67.099609 40 66.099609 C 39.3 65.099609 34 58.100781 34 50.800781 C 34 43.500781 37.799219 40 39.199219 38.5 C 40.599219 37 42.099609 36.699219 43.099609 36.699219 z">
                                 </path>
                             </svg>
                         </a>
-                        <a class="social-link" href="https://www.instagram.com/janaina1519/" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                        <a class="social-link" href="https://www.instagram.com/janaina1519/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Janaina">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
                                 viewBox="0 0 30 30">
                                 <path
                                     d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z">
@@ -83,18 +92,23 @@
 
         <!-- Menu Lateral Mobile -->
         <div class="menu-overlay" id="menu-overlay"></div>
-        <nav class="menu-lateral" id="menu-lateral">
+        <nav class="menu-lateral" id="menu-lateral" aria-label="Menu mobile">
             <button class="menu-close" id="menu-close" aria-label="Fechar Menu">
                 <span></span>
                 <span></span>
             </button>
             <ul class="menu-lateral-list">
                 <li><a href="#secao-2" class="menu-lateral-link">BENEFÍCIOS</a></li>
-                <li><a href="#secao-3" class="menu-lateral-link">AVALIAÇÕES</a></li>
-                <li><a href="#secao-4" class="menu-lateral-link">CONSULTORIA</a></li>
+                <li><a href="#secao-3" class="menu-lateral-link">CONSULTORIA</a></li>
+                <li><a href="#planos" class="menu-lateral-link">PLANOS</a></li>
                 <li><a href="#secao-5" class="menu-lateral-link">DICAS</a></li>
+                <li><a href="#faq" class="menu-lateral-link">DÚVIDAS</a></li>
             </ul>
-            <a href="https://www.instagram.com/janaina1519/"><i class="bi bi-instagram"></i></a>
+            <!-- Redes no fim do menu mobile: WhatsApp e Instagram lado a lado -->
+            <div class="menu-lateral-redes">
+                <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vim%20pelo%20site%20e%20quero%20agendar%20minha%20primeira%20aula." target="_blank" rel="noopener noreferrer" class="menu-lateral-social" aria-label="Agendar aula pelo WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/janaina1519/" target="_blank" rel="noopener noreferrer" class="menu-lateral-social" aria-label="Instagram da Janaina"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            </div>
         </nav>
 
         <main id="conteudo-principal">
@@ -102,80 +116,73 @@
             <div class="secao-1" id="secao-1">
                 <div class="img-secao" id="img-secao">
                     <div class="txt-topo" id="txt-topo">
-                        <h1>Elevar sua rotina é sobre disciplina, foco e resultados
-                            reais. O que hoje parece impossível, em pouco tempo será só o começo da sua evolução.</h1>
-                        <h2>Sou Janaina Santos, personal trainer dedicada a transformar treinos em resultados reais,
-                            ajudando você a conquistar saúde, performance e confiança!</h2>
+                        <!-- Proposta de valor: quem é, o que oferece e como começar -->
+                        <p class="tag-topo">Personal Trainer · Presencial ou online</p>
+                        <h1>Treinos personalizados para você conquistar saúde, performance e confiança</h1>
+                        <h2>Sou Janaina Santos e transformo treinos em resultados reais. O que hoje parece impossível,
+                            em pouco tempo será só o começo da sua evolução.</h2>
+                        <ul class="destaques-topo">
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Treino sob medida</li>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Orientação alimentar</li>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Suporte pelo WhatsApp</li>
+                        </ul>
                         <p>Agende sua primeira aula e descubra na prática!</p>
                         <div class="btn-secao-1" id="btn-secao">
-                            <button onclick="openModal()" class="animated-button">
-                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                            <!-- CTA principal: WhatsApp com mensagem pronta -->
+                            <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vim%20pelo%20site%20e%20quero%20agendar%20minha%20primeira%20aula." target="_blank" rel="noopener noreferrer" class="animated-button btn-principal">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path
                                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
                                     </path>
                                 </svg>
-                                <span class="text">Começar Projeto</span>
+                                <span class="text">Agendar pelo WhatsApp</span>
                                 <span class="circle"></span>
-                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <!-- CTA secundário: formulário em modal -->
+                            <button type="button" onclick="openModal()" class="animated-button" aria-haspopup="dialog">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                    </path>
+                                </svg>
+                                <span class="text">Prefiro formulário</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path
                                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
                                     </path>
                                 </svg>
                             </button>
-                            <div id="modal-container" class="modal-container">
+                            <div id="modal-container" class="modal-container" role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
                                 <div class="modal">
-                                    <button class="fechar" id="fechar">X</button>
+                                    <button type="button" class="fechar" id="fechar" aria-label="Fechar formulário">X</button>
                                     <div class="formulario">
-                                        <H1>Preencha o formulário e <br> <span>Entraremos em contato</span></H1>
-                                        <h2></h2>
+                                        <h2 id="titulo-modal" class="titulo-modal">Preencha o formulário e <br> <span>Entraremos em contato</span></h2>
                                         <form action="https://formsubmit.co/janaina1519@yahoo.com.br" method="POST" target="_blank">
-                                            <input type="text" name="Nome" placeholder="Digite seu nome completo"
-                                                required autocomplete="off">
-                                            <input type="tel" name="Telefone" placeholder="11-99999-9999" required
-                                                autocomplete="off">
-                                            <input type="email" name="Email" placeholder="Seu melhor e-mail" required
-                                                autocomplete="off">
-                                            <textarea name="Mensagem" id="mensagem" placeholder="Digite sua mensagem"
+                                            <input type="text" name="Nome" placeholder="Digite seu nome completo" aria-label="Nome completo"
+                                                required autocomplete="name">
+                                            <input type="tel" name="Telefone" placeholder="11-99999-9999" aria-label="Telefone com DDD" required
+                                                inputmode="tel" autocomplete="tel">
+                                            <input type="email" name="Email" placeholder="Seu melhor e-mail" aria-label="E-mail" required
+                                                autocomplete="email">
+                                            <textarea name="Mensagem" id="mensagem" placeholder="Digite sua mensagem" aria-label="Mensagem"
                                                 required autocomplete="off"></textarea>
-                                            <button id="enviar" type="submit" disabled
-                                                class="overflow-hidden relative w-32 p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group">
-                                                ENVIAR
-                                                <span
-                                                    class="absolute w-36 h-32 -top-8 -left-2 bg-sky-200 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-right"></span>
-                                                <span
-                                                    class="absolute w-36 h-32 -top-8 -left-2 bg-sky-400 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-right"></span>
-                                                <span
-                                                    class="absolute w-36 h-32 -top-8 -left-2 bg-teal-600 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-1000 duration-500 origin-right"></span>
-                                                <span
-                                                    class="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-6 z-10">ENVIAR</span>
-                                            </button>
-
-
+                                            <!-- Botão principal do sistema (.cta-whats), sem ícone -->
+                                            <button id="enviar" type="submit" disabled class="cta-whats">ENVIAR</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                            <a href="https://wa.me/5511974895522" target="_blank"><button class="animated-button">
-                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                    <span class="text">Fale Comigo</span>
-                                    <span class="circle"></span>
-                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </a>
-
                         </div>
                     </div>
-                    <div class="img-pessoal" id="img-pessoal">
-                        <img loading="lazy">
-                    </div>
+                    <!-- Espaço reservado para a foto de fundo aparecer à direita no desktop
+                         (o <img> sem src que ficava aqui não exibia nada e foi removido) -->
+                    <div class="img-pessoal" id="img-pessoal" aria-hidden="true"></div>
 
                 </div>
 
@@ -185,7 +192,7 @@
             <div class="secao-2" id="secao-2">
                 <div class="container-Beneficios">
                     <div class="txt-beneficios" id="txt-beneficios">
-                        <h1>Benefícios</h1>
+                        <h2>Benefícios</h2>
                         <p> Os 4 Pilares da sua Transformação!</p>
                     </div>
                     <article class="pilares">
@@ -193,32 +200,32 @@
                         <div data-aos="fade-up" data-aos-anchor-placement="center" class="circle-container">
                             <div class="descricao">
                             </div>
-                            <div class="central-circle"><img src="Assets/img-web/js-Photoroom.png" alt="Logotipo JS Personal Trainer" loading="lazy"></div>
+                            <div class="central-circle"><img src="Assets/img-web/js-Photoroom.png" alt="Logotipo JS Personal Trainer" width="288" height="177" loading="lazy" decoding="async"></div>
 
                             <div class="pillar pillar1">01</div>
                             <div class="txt-pilha1">
-                                <h1>Treino Sob Medida</h1>
+                                <h3>Treino Sob Medida</h3>
                                 <p>Treino adaptado aos seus objetivos (emagrecimento, massa, performance ou
                                     reabilitação), ajustado ao seu nível e limitações, diminuindo riscos de lesão.</p>
                                 <div class="linha-bene1"></div>
                             </div>
                             <div class="pillar pillar2">02</div>
                             <div class="txt-pilha2">
-                                <h1>Aprenda a Nutrir Seu Corpo</h1>
+                                <h3>Aprenda a Nutrir Seu Corpo</h3>
                                 <p>Você aprende a fazer escolhas inteligentes no dia a dia, entendendo o que comer e por
                                     quê, criando hábitos duradouros.</p>
                                 <div class="linha-bene2"></div>
                             </div>
                             <div class="pillar pillar3">03</div>
                             <div class="txt-pilha3">
-                                <h1>Treine com Estratégia</h1>
+                                <h3>Treine com Estratégia</h3>
                                 <p>Com orientação profissional, você evita perder tempo com treinos genéricos e foca em
                                     estratégias que aceleram a conquista dos seus objetivos.</p>
                                 <div class="linha-bene3"></div>
                             </div>
                             <div class="pillar pillar4">04</div>
                             <div class="txt-pilha4">
-                                <h1>Sempre Um Passo à Frente</h1>
+                                <h3>Sempre Um Passo à Frente</h3>
                                 <p>O personal avalia seu progresso, ajusta cargas, intensidades e métodos, garantindo
                                     evolução constante e evitando estagnação.</p>
                                 <div class="linha-bene4"></div>
@@ -233,20 +240,18 @@
 
             <!-- Consultoria -->
             <section>
-                <div data-aos="fade-up" data-aos-anchor-placement="
-                bottom-bottom" data-aos-offset="200" class="secao-3" id="secao-3">
-                    <h1>Consultoria</h1>
-                    <h2>Tenha acesso à consultoria para facilitar sua jornada</h2>
+                <div data-aos="fade-up" data-aos-offset="200" class="secao-3" id="secao-3">
+                    <h2>Consultoria</h2>
+                    <p class="subtitulo">Tudo o que está incluído no seu acompanhamento</p>
                     <div class="container-consul">
                         <div class="box">
                             <span class="title"></span>
                             <div class="box-consultoria">
-                                <h3>Avaliação Física Completa e Diagnóstico 360°:<p>Uma análise detalhada do seu corpo,
-                                        incluindo bioimpedância, medidas corporais e avaliação da composição corporal.
-                                        Além disso, um diagnóstico completo da sua rotina, objetivos e preferências para
-                                        criar um plano sob medida.</p>
-                                </h3>
-                                <img src="Assets/img-web/prt-foto-1-1024x682.webp" alt="Avaliação física completa com personal trainer" loading="lazy">
+                                <div class="txt-consultoria">
+                                    <h3>Avaliação Física Completa e Diagnóstico 360°:</h3>
+                                    <p>Uma análise detalhada do seu corpo, incluindo bioimpedância, medidas corporais e avaliação da composição corporal. Além disso, um diagnóstico completo da sua rotina, objetivos e preferências para criar um plano sob medida.</p>
+                                </div>
+                                <img src="Assets/img-web/prt-foto-1-1024x682.webp" alt="Avaliação física completa com personal trainer" width="1024" height="682" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
@@ -258,12 +263,11 @@
                             <span class="title"></span>
                             <div>
                                 <div class="box-consultoria">
-                                    <h3>Plano de Treino Personalizado:<p>Um programa de treinamento individualizado,
-                                            focado nos seus objetivos, limitações e tempo disponível. Inclui vídeos de
-                                            execução correta dos exercícios e informações sobre séries, repetições e
-                                            descanso.</p>
-                                    </h3>
-                                    <img src="Assets/img-web/prt-foto-2-1024x682.webp" alt="Plano de treino personalizado com coach" loading="lazy">
+                                    <div class="txt-consultoria">
+                                        <h3>Plano de Treino Personalizado:</h3>
+                                        <p>Um programa de treinamento individualizado, focado nos seus objetivos, limitações e tempo disponível. Inclui vídeos de execução correta dos exercícios e informações sobre séries, repetições e descanso.</p>
+                                    </div>
+                                    <img src="Assets/img-web/prt-foto-2-1024x682.webp" alt="Plano de treino personalizado com coach" width="1024" height="682" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </div>
@@ -275,11 +279,11 @@
                         <div class="box">
                             <span class="title"></span>
                             <div class="box-consultoria">
-                                <h3>Plano Alimentar Individualizado:<p>Uma dieta personalizada, com alimentos que você
-                                        gosta e que se encaixam no seu orçamento e rotina. Inclui opções de substituição
-                                        e um aplicativo para acessar seu plano alimentar a qualquer momento.</p>
-                                </h3>
-                                <img src="Assets/img-web/prt-foto-3-1024x682.webp" alt="Plano alimentar individualizado" loading="lazy">
+                                <div class="txt-consultoria">
+                                    <h3>Plano Alimentar Individualizado:</h3>
+                                    <p>Uma dieta personalizada, com alimentos que você gosta e que se encaixam no seu orçamento e rotina. Inclui opções de substituição e um aplicativo para acessar seu plano alimentar a qualquer momento.</p>
+                                </div>
+                                <img src="Assets/img-web/prt-foto-3-1024x682.webp" alt="Plano alimentar individualizado" width="1024" height="682" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
@@ -290,13 +294,11 @@
                         <div class="box">
                             <span class="title"></span>
                             <div class="box-consultoria">
-                                <h3>Acompanhamento Diário via WhatsApp:<p>Conte com comunicação direta e constante com
-                                        seu treinador e nutricionista para esclarecer dúvidas, receber feedback
-                                        personalizado e ajustar seu plano sempre que necessário. Esse acompanhamento
-                                        garante que você siga no caminho certo, mantendo motivação e resultados
-                                        consistentes.</p>
-                                </h3>
-                                <img src="Assets/img-web/prt-foto-4-1024x682.webp" alt="Acompanhamento diário por WhatsApp" loading="lazy">
+                                <div class="txt-consultoria">
+                                    <h3>Acompanhamento Diário via WhatsApp:</h3>
+                                    <p>Conte com comunicação direta e constante com seu treinador e nutricionista para esclarecer dúvidas, receber feedback personalizado e ajustar seu plano sempre que necessário. Esse acompanhamento garante que você siga no caminho certo, mantendo motivação e resultados consistentes.</p>
+                                </div>
+                                <img src="Assets/img-web/prt-foto-4-1024x682.webp" alt="Acompanhamento diário por WhatsApp" width="1024" height="682" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
@@ -307,32 +309,35 @@
                         <div class="box">
                             <span class="title"></span>
                             <div class="box-consultoria">
-                                <h3>Avaliações Semanais e Ajustes no Plano:<p>Monitoramento constante da sua evolução,
-                                        com avaliações semanais detalhadas e ajustes personalizados no plano, garantindo
-                                        que cada treino e cada refeição estejam alinhados aos seus objetivos. Com esse
-                                        acompanhamento, você maximiza resultados, evita estagnação e mantém a motivação
-                                        sempre alta.</p>
-                                </h3>
-                                <img src="Assets/img-web/prt-foto-5-1024x682.webp" alt="Avaliações semanais para evolução constante" loading="lazy">
+                                <div class="txt-consultoria">
+                                    <h3>Avaliações Semanais e Ajustes no Plano:</h3>
+                                    <p>Monitoramento constante da sua evolução, com avaliações semanais detalhadas e ajustes personalizados no plano, garantindo que cada treino e cada refeição estejam alinhados aos seus objetivos. Com esse acompanhamento, você maximiza resultados, evita estagnação e mantém a motivação sempre alta.</p>
+                                </div>
+                                <img src="Assets/img-web/prt-foto-5-1024x682.webp" alt="Avaliações semanais para evolução constante" width="1024" height="682" loading="lazy" decoding="async">
                             </div>
                         </div>
+                    </div>
+
+                    <!-- CTA ao final da consultoria: o primeiro passo é a avaliação -->
+                    <div class="cta-secao">
+                        <p>O primeiro passo é a sua avaliação física. Vamos começar?</p>
+                        <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vim%20pelo%20site%20e%20quero%20agendar%20minha%20avalia%C3%A7%C3%A3o%20f%C3%ADsica." target="_blank" rel="noopener noreferrer" class="cta-whats"><i class="bi bi-whatsapp" aria-hidden="true"></i>Agendar minha avaliação</a>
                     </div>
                 </div>
             </section>
 
             <!-- Planos -->
             <section>
-                <div data-aos="fade-up" data-aos-anchor-placement="
-                center-botto" data-aos-offset="0" class="secao-4" id="secao-4">
+                <div data-aos="fade-up" data-aos-offset="0" class="secao-4" id="secao-4">
                     <div class="m2">
                         <div class="logo">
-                            <h1>Quer ter grandes resultados?<br><span>Então esteja com os melhores!</span></h1>
+                            <h2>Quer ter grandes resultados?<br><span>Então esteja com os melhores!</span></h2>
                             <div class="content-complete">
                                 <div class="card-content">
                                     <div class="card-list">
+                                        <h3>Outras consultorias online!</h3>
                                         <ul>
-                                            <h2>Outras consultorias online!</h2>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -344,7 +349,7 @@
                                                         d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                                                     </path>
                                                 </svg>Atendimento limitado apenas durante o treino</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -356,7 +361,7 @@
                                                         d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                                                     </path>
                                                 </svg>Treinos básicos e muitas vezes iguais para todos</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -368,7 +373,7 @@
                                                         d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                                                     </path>
                                                 </svg>Foco apenas no exercício físico</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -380,7 +385,7 @@
                                                         d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                                                     </path>
                                                 </svg>Resultados lentos por falta de ajustes constantes</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -392,7 +397,7 @@
                                                         d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                                                     </path>
                                                 </svg>Usa planilhas simples ou treinos no papel</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -404,7 +409,7 @@
                                                         d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                                                     </path>
                                                 </svg>Corrige a execução somente quando percebe o erro</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -416,7 +421,7 @@
                                                         d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                                                     </path>
                                                 </svg>Motivação restrita ao momento do treino</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -428,7 +433,7 @@
                                                         d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                                                     </path>
                                                 </svg>Horários fixos e pouco flexíveis</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 48 48">
                                                     <path fill="#f44336"
                                                         d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z">
@@ -448,9 +453,9 @@
 
                                 <div class="card-content-2">
                                     <div class="card-list-2">
+                                        <h3>Nossa consultoria com a personal!</h3>
                                         <ul>
-                                            <h2>Nossa consultoria com a personal!</h2>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 120 120">
                                                     <circle cx="60" cy="64" r="48" opacity=".35"></circle>
                                                     <circle cx="60" cy="60" r="48" fill="#44bf00"></circle>
@@ -461,7 +466,7 @@
                                                         points="53.303,84 26.139,56.838 33.582,49.395 53.303,69.116 86.418,36 93.861,43.443">
                                                     </polygon>
                                                 </svg>Suporte contínuo (WhatsApp, vídeo, dúvidas a qualquer hora)</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 120 120">
                                                     <circle cx="60" cy="64" r="48" opacity=".35"></circle>
                                                     <circle cx="60" cy="60" r="48" fill="#44bf00"></circle>
@@ -472,7 +477,7 @@
                                                         points="53.303,84 26.139,56.838 33.582,49.395 53.303,69.116 86.418,36 93.861,43.443">
                                                     </polygon>
                                                 </svg>Treinamentos 100% personalizados e exclusivos</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 120 120">
                                                     <circle cx="60" cy="64" r="48" opacity=".35"></circle>
                                                     <circle cx="60" cy="60" r="48" fill="#44bf00"></circle>
@@ -483,7 +488,7 @@
                                                         points="53.303,84 26.139,56.838 33.582,49.395 53.303,69.116 86.418,36 93.861,43.443">
                                                     </polygon>
                                                 </svg>Integra treino + alimentação + estilo de vida</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 120 120">
                                                     <circle cx="60" cy="64" r="48" opacity=".35"></circle>
                                                     <circle cx="60" cy="60" r="48" fill="#44bf00"></circle>
@@ -494,7 +499,7 @@
                                                         points="53.303,84 26.139,56.838 33.582,49.395 53.303,69.116 86.418,36 93.861,43.443">
                                                     </polygon>
                                                 </svg>Resultados acelerados com ajustes semanais/mensais</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 120 120">
                                                     <circle cx="60" cy="64" r="48" opacity=".35"></circle>
                                                     <circle cx="60" cy="60" r="48" fill="#44bf00"></circle>
@@ -505,7 +510,7 @@
                                                         points="53.303,84 26.139,56.838 33.582,49.395 53.303,69.116 86.418,36 93.861,43.443">
                                                     </polygon>
                                                 </svg>Uso de aplicativos, relatórios e tecnologia de acompanhamento</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 120 120">
                                                     <circle cx="60" cy="64" r="48" opacity=".35"></circle>
                                                     <circle cx="60" cy="60" r="48" fill="#44bf00"></circle>
@@ -516,7 +521,7 @@
                                                         points="53.303,84 26.139,56.838 33.582,49.395 53.303,69.116 86.418,36 93.861,43.443">
                                                     </polygon>
                                                 </svg>Atenção total em cada detalhe do movimento e evolução</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 120 120">
                                                     <circle cx="60" cy="64" r="48" opacity=".35"></circle>
                                                     <circle cx="60" cy="60" r="48" fill="#44bf00"></circle>
@@ -527,7 +532,7 @@
                                                         points="53.303,84 26.139,56.838 33.582,49.395 53.303,69.116 86.418,36 93.861,43.443">
                                                     </polygon>
                                                 </svg>Constante incentivo e acompanhamento de metas</li>
-                                            <li><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0 0 120 120">
                                                     <circle cx="60" cy="64" r="48" opacity=".35"></circle>
                                                     <circle cx="60" cy="60" r="48" fill="#44bf00"></circle>
@@ -550,35 +555,58 @@
                     </div>
 
                 </div>
-                <div class="flex justify-center py-10">
-                    <a href="https://wa.me/5511974895522"><button
-                            class="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-teal-700 rounded-md group">
-                            <span
-                                class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-teal-500 rounded group-hover:-mr-4 group-hover:-teal-4">
-                                <span
-                                    class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
-                            </span>
-                            <span
-                                class="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-teal-500 rounded group-hover:-ml-4 group-hover:-mb-4">
-                                <span
-                                    class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
-                            </span>
-                            <span
-                                class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-teal-500 rounded-md group-hover:translate-x-0"></span>
-                            <span
-                                class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">Fazer
-                                Consultoria</span>
-                        </button></a>
+
+                <!-- Planos: mesmo conteúdo em todos, muda só a duração (sem preços no site) -->
+                <div class="planos" id="planos">
+                    <h2>Escolha seu plano</h2>
+                    <p class="subtitulo">O acompanhamento é o mesmo em todos. Planos mais longos têm descontos progressivos.</p>
+
+                    <div class="planos-incluso">
+                        <h3>Incluso em todos os planos</h3>
+                        <ul>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Avaliação física completa</li>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Plano de treino personalizado</li>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Plano alimentar individualizado</li>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Acompanhamento pelo WhatsApp</li>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Avaliações e ajustes no plano</li>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i>Presencial ou online</li>
+                        </ul>
+                    </div>
+
+                    <ul class="planos-lista">
+                        <li class="plano-card">
+                            <h3>Mensal</h3>
+                            <p>Para começar e sentir na prática a diferença de treinar com acompanhamento.</p>
+                            <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20plano%20Mensal." target="_blank" rel="noopener noreferrer" class="cta-whats"><i class="bi bi-whatsapp" aria-hidden="true"></i>Quero o plano Mensal</a>
+                        </li>
+                        <li class="plano-card">
+                            <h3>Trimestral</h3>
+                            <p>Tempo para criar hábitos e ver a evolução, com desconto em relação ao mensal.</p>
+                            <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20plano%20Trimestral." target="_blank" rel="noopener noreferrer" class="cta-whats"><i class="bi bi-whatsapp" aria-hidden="true"></i>Quero o plano Trimestral</a>
+                        </li>
+                        <li class="plano-card plano-destaque">
+                            <span class="plano-selo">Melhor custo-benefício</span>
+                            <h3>Semestral / Anual</h3>
+                            <p>Para quem quer resultados duradouros, com o maior desconto progressivo.</p>
+                            <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20plano%20Semestral%2FAnual." target="_blank" rel="noopener noreferrer" class="cta-whats"><i class="bi bi-whatsapp" aria-hidden="true"></i>Quero o Semestral/Anual</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dúvida sobre qual plano escolher -->
+                <div class="flex justify-center py-10 px-4">
+                    <!-- Botão secundário (contorno) do mesmo sistema do .cta-whats -->
+                    <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vim%20pelo%20site%20e%20queria%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20planos." target="_blank" rel="noopener noreferrer"
+                            class="cta-whats cta-secundario"><i class="bi bi-chat-dots" aria-hidden="true"></i>Ficou em dúvida? Fale comigo</a>
                 </div>
             </section>
 
             <!-- Exercícios e IMC -->
             <section>
-                <div data-aos="fade-up" data-aos-anchor-placement="
-                bottom-bottom" data-aos-offset="50" class="secao-5" id="secao-5">
+                <div data-aos="fade-up" data-aos-offset="50" class="secao-5" id="secao-5">
                     <div class="dicas-muscle" id="dicas-muscle">
-                        <h1>Você sabe os 3 melhores exercícios para cada músculo?</h1>
-                        <h2>Veja agora mesmo com a personal!</h2>
+                        <h2>Você sabe os 3 melhores exercícios para cada músculo?</h2>
+                        <p class="subtitulo">Veja agora mesmo com a personal!</p>
 
                         <!-- Grupo muscular -->
                         <label>
@@ -593,49 +621,63 @@
                                 <option value="abs">Abdômen</option>
                             </select>
                         </label>
-                        <button id="load">Carregar</button>
+                        <button type="button" id="load">Carregar</button>
 
-                        <div id="list" class="grid"></div>
+                        <div id="list" class="grid" aria-live="polite"></div>
+
+                        <!-- CTA depois dos exercícios -->
+                        <div class="cta-secao">
+                            <p>Quer saber a carga, as séries e a execução certas para você?</p>
+                            <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vi%20as%20dicas%20de%20exerc%C3%ADcios%20no%20site%20e%20quero%20um%20treino%20montado%20para%20mim." target="_blank" rel="noopener noreferrer" class="cta-whats"><i class="bi bi-whatsapp" aria-hidden="true"></i>Quero um treino feito para mim</a>
+                        </div>
                     </div>
                     <div class="secao-imc">
-                        <h1>Saiba em segundos como está <span>sua saúde com o IMC!</span> </h1>
+                        <h2>Saiba em segundos como está <span>sua saúde com o IMC!</span></h2>
                         <div class="container-imc">
                             <div class="title"> Calculadora - IMC </div>
                             <div class="input">
-                                <label>Nome:</label>
-                                <input type="text" id='nome' placeholder="Nome" autocomplete="none">
+                                <label for="nome">Nome:</label>
+                                <input type="text" id="nome" placeholder="Nome" autocomplete="given-name">
                             </div>
                             <div class="input">
-                                <label>Altura:</label>
-                                <input type="number" id='altura' placeholder="Centimetros">
+                                <label for="altura">Altura:</label>
+                                <input type="text" inputmode="decimal" id="altura" placeholder="Ex: 170 cm">
                             </div>
                             <div class="input">
-                                <label>Peso:</label>
-                                <input type="number" id='peso' placeholder='Peso'>
+                                <label for="peso">Peso:</label>
+                                <input type="text" inputmode="decimal" id="peso" placeholder="Ex: 70 kg">
                             </div>
-                            <button id='calcular'>Calcular</button>
+                            <button type="button" id="calcular">Calcular</button>
 
-                            <div class="result" id='resultado'></div>
+                            <div class="result" id="resultado" role="status" aria-live="polite"></div>
+                        </div>
+
+                        <!-- CTA exibido pelo imc.js só depois de um resultado válido -->
+                        <div class="cta-secao" id="cta-imc" hidden>
+                            <p>O IMC é só uma referência inicial: a avaliação física completa mostra sua composição corporal.</p>
+                            <a href="https://wa.me/5511974895522" target="_blank" rel="noopener noreferrer" class="cta-whats" id="cta-imc-link"><i class="bi bi-whatsapp" aria-hidden="true"></i>Quero minha avaliação completa</a>
                         </div>
                     </div>
                 </div>
             </section>
 
+        </section>
+        </main>
+
             <!--*SEÇÃO FAQ-->
-            </main>
             <section>
                 <div class="footer" id="footer">
                     <div class="img-footer" id="img-footer">
-                        <img src="Assets/img-web/js-Photoroom2.png" alt="Logotipo JS Personal Trainer" loading="lazy">
+                        <img src="Assets/img-web/js-Photoroom2.png" alt="Logotipo JS Personal Trainer" width="500" height="171" loading="lazy" decoding="async">
                     </div>
                     <div class="geral-list">
                         <div class="faq" id="faq">
-                            <p>Ainda com dúvidas?</p>
+                            <h2>Ainda com dúvidas?</h2>
                         </div>
 
                         <div class="list-footer">
                             <p class="post-summary"><span>01.</span>Como funciona a consultoria?</p>
-                            <button class="read-more">&#9660;</button>
+                            <button type="button" class="read-more" aria-expanded="false" aria-label="Mostrar resposta">&#9660;</button>
 
                             <div class="post-content">
                                 <div class="post-content-inner">
@@ -649,7 +691,7 @@
                         </div>
                         <div class="list-footer2">
                             <p class="post-summary"><span>02.</span>Como é montado o plano de treino e dieta?</p>
-                            <button class="read-more-2">&#9660;</button>
+                            <button type="button" class="read-more-2" aria-expanded="false" aria-label="Mostrar resposta">&#9660;</button>
 
                             <div class="post-content">
                                 <div class="post-content-inner">
@@ -662,7 +704,7 @@
                         </div>
                         <div class="list-footer3">
                             <p class="post-summary"><span>03.</span>Quais os planos de acompanhamento disponíveis?</p>
-                            <button class="read-more-3">&#9660;</button>
+                            <button type="button" class="read-more-3" aria-expanded="false" aria-label="Mostrar resposta">&#9660;</button>
 
                             <div class="post-content">
                                 <div class="post-content-inner">
@@ -676,7 +718,7 @@
                         <div class="list-footer4">
                             <p class="post-summary"><span>04.</span>Quanto tempo começo a ver resultados no meu corpo?
                             </p>
-                            <button class="read-more-4">&#9660;</button>
+                            <button type="button" class="read-more-4" aria-expanded="false" aria-label="Mostrar resposta">&#9660;</button>
 
                             <div class="post-content">
                                 <div class="post-content-inner">
@@ -688,43 +730,67 @@
                             </div>
                             <div class="linha-h"></div>
                         </div>
+
+                        <!-- CTA para quem não achou a resposta -->
+                        <div class="cta-secao cta-faq">
+                            <p>Não encontrou sua dúvida?</p>
+                            <a href="https://wa.me/5511974895522?text=Ol%C3%A1%2C%20Janaina!%20Vim%20pelo%20site%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener noreferrer" class="cta-whats"><i class="bi bi-whatsapp" aria-hidden="true"></i>Pergunte no WhatsApp</a>
+                        </div>
                     </div>
                     <div class="img-footer-pessoal" id="img-footer-pessoal">
-                        <img src="Assets/img-web/foto footer.jpg" alt="Foto de Janaina Santos no rodapé" loading="lazy">
+                        <img src="Assets/img-web/foto footer.jpg" alt="Foto de Janaina Santos no rodapé" width="612" height="408" loading="lazy" decoding="async">
                     </div>
                 </div>
-                <div class="credenciais">
-                    <p>© 2026 Todos os direitos reservados.</p>
+                <!-- Rodapé: contato, links rápidos e créditos -->
+                <footer class="credenciais">
+                    <div class="rodape-contato">
+                        <nav aria-label="Links do rodapé">
+                            <ul class="rodape-links">
+                                <li><a href="#secao-2">Benefícios</a></li>
+                                <li><a href="#secao-3">Consultoria</a></li>
+                                <li><a href="#planos">Planos</a></li>
+                                <li><a href="#secao-5">Dicas</a></li>
+                                <li><a href="#faq">Dúvidas</a></li>
+                            </ul>
+                        </nav>
+                        <ul class="rodape-social">
+                            <li><a href="https://wa.me/5511974895522" target="_blank" rel="noopener noreferrer"><i class="bi bi-whatsapp" aria-hidden="true"></i>(11) 97489-5522</a></li>
+                            <li><a href="https://www.instagram.com/janaina1519/" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram" aria-hidden="true"></i>@janaina1519</a></li>
+                        </ul>
+                    </div>
+                    <p>© 2026 Janaina Santos Personal Trainer. Todos os direitos reservados.</p>
                     <p>Desenvolvido por GS│Dev</p>
-                </div>
+                </footer>
             </section>
 
-            <div id="BackUpButton" class="button-fixed"><i class="bi bi-chevron-up"></i></div>
-            <div id="btnWhats" class="button-fixed"><i class="bi bi-whatsapp"></i>
-            </div>
+            <button type="button" id="BackUpButton" class="button-fixed" aria-label="Voltar ao topo"><i class="bi bi-chevron-up" aria-hidden="true"></i></button>
+            <button type="button" id="btnWhats" class="button-fixed" aria-label="Conversar no WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i>
+            </button>
     </div><!--FIM BACK-BOTTOM-->
 
 <!--lib Aos-->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
 <!--*AOS-->
 <script>
-    AOS.init({
-        duration: 1000,  // duração em ms 
-        once: false,       // anima só na primeira vez (opcional)
-        offset: 100  // metade da altura da viewport
+    // Espera o aos.js (defer) carregar antes de iniciar
+    document.addEventListener('DOMContentLoaded', function () {
+        AOS.init({
+            duration: 1000,  // duração em ms
+            once: false,     // false = anima toda vez que a seção entra na tela
+            offset: 100      // distância (px) do fim da tela para começar a animar
+        });
     });
 </script>
 
-<script src="Assets/js/modal.js"></script>
-<script src="Assets/js/imc.js"></script>
-<script src="Assets/js/muscle.js"></script>
-<script src="Assets/js/Scroll.js"></script>
-<script src="Assets/js/readmore.js"></script>
-<script src="Assets/js/Buttons.js"></script>
-<script src="Assets/js/menu-mobile.js"></script>
-<script src="Assets/js/ofset.js"></script>
-<script src="Assets/js/seo.js"></script>
+<!-- Scripts locais com defer: não bloqueiam a renderização e rodam na ordem abaixo -->
+<script src="Assets/js/modal.js" defer></script>
+<script src="Assets/js/imc.js" defer></script>
+<script src="Assets/js/muscle.js" defer></script>
+<script src="Assets/js/readmore.js" defer></script>
+<script src="Assets/js/Buttons.js" defer></script>
+<script src="Assets/js/menu-mobile.js" defer></script>
+<script src="Assets/js/seo.js" defer></script>
 </body>
 
 </html>
