@@ -1,5 +1,6 @@
-(function() {
-  var ld = {
+// Dados estruturados (JSON-LD) para o Google entender a página como um serviço profissional
+(function () {
+  const ld = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Janaina Santos Personal Trainer",
@@ -11,7 +12,7 @@
       "https://www.instagram.com/janaina1519/"
     ]
   };
-  var script = document.createElement('script');
+  const script = document.createElement('script');
   script.type = 'application/ld+json';
   script.textContent = JSON.stringify(ld);
   document.head.appendChild(script);

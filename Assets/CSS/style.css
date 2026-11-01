@@ -1,5 +1,4 @@
-@import url(' https://fonts.cdnfonts.com/css/young-serif ');
-@import url('https://fonts.cdnfonts.com/css/tt-hoves-pro-trial');
+/* Fontes (young-serif e tt-hoves-pro-trial) são carregadas por <link> no index.html */
 
 /* Estiliza a barra inteira */
 ::-webkit-scrollbar {
@@ -43,6 +42,20 @@
   --color-destaque1: #77a8a8;
   --font-grande: 'tt-hoves-pro-trial', sans-serif;
   --font-pequena: 'young-serif', sans-serif;
+
+  /* Tons de apoio da mesma paleta */
+  --color-esmerald-escuro: #04b386;
+  /* hover dos botões preenchidos */
+  --color-texto-suave: #c9d4d2;
+  /* textos longos sobre fundo escuro (contraste AA) */
+
+  /* Escala de espaçamento, raios e sombras */
+  --espaco-secao: clamp(4rem, 8vw, 7rem);
+  --raio-pequeno: 12px;
+  --raio-card: 20px;
+  --raio-pill: 100px;
+  --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --sombra-brilho: 0 12px 34px rgba(6, 214, 160, 0.28);
 }
 
 body {
@@ -71,6 +84,11 @@ body {
   justify-content: space-around;
 }
 
+.logo-topo {
+  flex-shrink: 0;
+  /* O logo não encolhe quando o menu ocupa mais espaço */
+}
+
 .logo-topo img {
   width: 250px;
   margin: 30px;
@@ -78,6 +96,13 @@ body {
 
 .menu-navegacao {
   margin: 60px;
+}
+
+.menu-navegacao ul {
+  /* Um <li> por link, lado a lado */
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .menu-navegacao ul li {
@@ -136,7 +161,7 @@ body {
   height: 3px;
   background-color: var(--color-white);
   border-radius: 3px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .hamburger-menu.active span:nth-child(1) {
@@ -178,7 +203,8 @@ body {
   width: 280px;
   max-width: 85%;
   height: 100vh;
-  background: linear-gradient(120deg, rgba(0, 0, 0, 0.97), rgba(35, 111, 108, 0.342));
+  /* Fundo quase opaco: o texto do topo não aparece por trás dos links */
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.98), rgba(12, 48, 47, 0.97));
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
   transition: right 0.3s ease;
@@ -213,7 +239,7 @@ body {
   height: 3px;
   background-color: var(--color-white);
   border-radius: 3px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .menu-close span:nth-child(1) {
@@ -293,8 +319,8 @@ body {
   /* Cor de fundo do card */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   /* Sombra discreta */
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  /* Transições suaves ao interagir */
+  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Sombra suave ao passar o mouse */
   overflow: hidden;
   /* Esconde conteúdo que sair do card */
   height: 50px;
@@ -372,7 +398,7 @@ body {
   width: 100%;
   height: 100%;
   color: whitesmoke;
-  font-family: 'Fira Mono', monospace;
+  font-family: var(--font-grande);
   font-size: 24px;
   font-weight: 700;
   opacity: 1;
@@ -449,7 +475,7 @@ body {
   align-items: center;
   width: 100%;
   height: 100dvh;
-  background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0)), url('/Assets/img-web/foto-pessoal.png');
+  background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0)), url('/Assets/img-web/foto-pessoal.webp'); /* versão otimizada de foto-pessoal.png (1920px) */
   background-size: cover;
 }
 
@@ -480,10 +506,9 @@ body {
   font-size: 1rem;
 }
 
-.img-pessoal img {
-  position: relative;
-  width: 550px;
-  border-radius: 500px;
+/* Espaçador: deixa a foto do fundo aparecer à direita no desktop */
+.img-pessoal {
+  flex: 0 1 550px;
 }
 
 .btn-secao-1 {
@@ -507,6 +532,8 @@ body {
   color: greenyellow;
   box-shadow: 0 0 0 2px var(--color-esmerald);
   cursor: pointer;
+  text-decoration: none;
+  /* Também usado em links <a> */
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -516,7 +543,7 @@ body {
   width: 24px;
   fill: var(--color-esmerald);
   z-index: 9;
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: left 0.8s cubic-bezier(0.23, 1, 0.32, 1), right 0.8s cubic-bezier(0.23, 1, 0.32, 1), fill 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .animated-button .arr-1 {
@@ -537,14 +564,14 @@ body {
   background-color: var(--color-esmerald);
   border-radius: 50%;
   opacity: 0;
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1), height 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .animated-button .text {
   position: relative;
   z-index: 1;
   transform: translateX(-12px);
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), color 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .animated-button:hover {
@@ -581,33 +608,13 @@ body {
   opacity: 1;
 }
 
-.btn {
-  padding: 25px 60px;
-  display: inline;
-  background-color: tomato;
-  border-radius: 20px;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  transition: background-color 0.5s;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.btn:hover {
-  background-color: #ff4c2c;
-}
-
 .modal-container {
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #0000004b;
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 999;
   align-items: center;
   justify-content: center;
@@ -615,10 +622,14 @@ body {
 }
 
 .modal {
+  position: relative;
+  /* Ancora o botão fechar no canto do modal */
   width: 30%;
   min-width: 400px;
   min-height: 600px;
-  background-color: #ffffff62;
+  /* Fundo escuro translúcido para o texto branco ter contraste */
+  background-color: rgba(119, 168, 168, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   padding: 50px;
   border-radius: 15px;
@@ -639,12 +650,15 @@ body {
   cursor: pointer;
 }
 
-.modal h1 {
+/* Classe evita herdar o estilo de .txt-topo h2 (o modal fica dentro do topo) */
+.modal .titulo-modal {
   margin-bottom: 20px;
   font-size: 2em;
+  line-height: 1.2;
   text-transform: uppercase;
   font-family: var(--font-grande);
   font-weight: 600;
+  color: var(--color-white);
 }
 
 .modal span {
@@ -706,7 +720,6 @@ textarea {
 }
 
 .formulario textarea {
-  max-width: auto;
   height: 100px;
   padding: 5px;
 }
@@ -722,6 +735,30 @@ textarea {
   text-align: center;
 }
 
+/* Campo inválido ao sair dele (aria-invalid é marcado no modal.js) */
+.formulario [aria-invalid="true"] {
+  border-color: #e20808;
+}
+
+/* Campo em foco: borda esmeralda no lugar do contorno padrão */
+.formulario input:focus,
+.formulario textarea:focus {
+  border: 2px solid var(--color-esmerald);
+  outline: none;
+}
+
+/* Botão ENVIAR bloqueado até o formulário ser válido */
+#enviar:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* Sem efeito de hover enquanto estiver bloqueado */
+#enviar:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 
 /*SEÇÃO BENEFICIOS*/
 
@@ -730,16 +767,9 @@ textarea {
   margin: 7rem 0rem 25rem;
 }
 
-.container-s2 {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  /*centraliza o grid*/
-}
-
-.secao-2 h1 {
+/* h2 = título da seção | h3 = títulos dos pilares */
+.secao-2 h2,
+.secao-2 h3 {
   font-size: 3rem;
   font-family: var(--font-grande);
   text-transform: uppercase;
@@ -757,15 +787,6 @@ textarea {
 
 .pilares {
   padding: 7rem;
-}
-
-.pilares h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.container-pilhar {
-  display: flex;
 }
 
 .circle-container {
@@ -836,7 +857,7 @@ textarea {
   box-shadow: 0 0 15px #00ff80;
 }
 
-.circle-container h1 {
+.circle-container h3 {
   font-size: 1.5rem;
   font-family: var(--font-grande);
   padding: 1rem;
@@ -1061,10 +1082,12 @@ textarea {
 
 /*SECAO CONSULTORIA*/
 .secao-3 {
+  position: relative;
+  /* Referência das linhas .linha1-4 mesmo sem a animação do AOS */
   margin-top: 20%;
 }
 
-.secao-3 h1 {
+.secao-3 h2 {
   text-align: center;
   padding-top: 90px;
   font-size: 3rem;
@@ -1072,7 +1095,7 @@ textarea {
   font-weight: 600;
 }
 
-.secao-3 h2 {
+.secao-3 .subtitulo {
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
@@ -1094,18 +1117,14 @@ textarea {
   height: 31.875em;
   padding: 1rem;
   background-color: #77a8a811;
-  border: 1px solid rgba(255, 255, 255, 0.222);
+  border: 1px solid var(--color-esmerald);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-radius: 0.7rem;
-  transition: all ease 0.3s;
-}
-
-.container-consul .box {
+  transition: box-shadow ease 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid var(--color-esmerald);
 }
 
 .container-consul .box .title {
@@ -1129,7 +1148,8 @@ textarea {
 .container-consul .box div p {
   max-width: 100%;
   width: fit-content;
-  margin: 0;
+  margin: 0 0 0 2.5rem;
+  /* Alinha com o h3 acima */
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -1229,10 +1249,12 @@ textarea {
 /**SECAO-4 - PRÓS E CONTRAS*/
 .secao-4 {
   justify-items: center;
-  padding: 20rem 0 0;
+  padding: var(--espaco-secao) 0 0;
+  overflow-x: clip;
+  /* O brilho do .m2 (::before) gerava rolagem lateral em tablets */
 }
 
-.secao-4 h1 {
+.secao-4 h2 {
   text-align: center;
   font-size: 2.5rem;
   font-family: var(--font-grande);
@@ -1243,7 +1265,7 @@ textarea {
   -webkit-background-clip: text;
 }
 
-.secao-4 h2 {
+.secao-4 h3 {
   text-align: center;
   font-size: 1.9rem;
   margin: 20px;
@@ -1279,7 +1301,7 @@ textarea {
   max-width: 30px;
 }
 
-.card-content h2 {
+.card-content h3 {
   background-image: linear-gradient(red);
   -webkit-background-clip: text;
 
@@ -1304,10 +1326,11 @@ textarea {
 /**RETIRADA DO MAX*/
 .card-list-2 {
   display: flex;
+  flex-direction: column;
   width: 350px;
 }
 
-.card-content-2 h2 {
+.card-content-2 h3 {
   background-image: linear-gradient(rgb(5, 218, 5));
   -webkit-background-clip: text;
 }
@@ -1338,10 +1361,8 @@ textarea {
   user-select: none;
   font-size: 5vmin;
   /* Smaller font size */
-  color: white;
-  background-image: linear-gradient(to right, #626262, #fff);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+  color: var(--color-white);
+  /* Sem o gradiente de texto cinza: ele vazava para as listas e deixava o texto com pouco contraste */
   font-weight: bold;
 
 }
@@ -1417,11 +1438,14 @@ textarea {
   position: absolute;
   top: 30%;
   /* distância do topo */
+  bottom: 32px;
+  /* termina dentro da caixa (antes passava da borda de baixo) */
   left: 50%;
   /* centraliza horizontalmente */
   transform: translateX(-50%);
   /* centraliza certinho */
-  height: 500px;
+  height: auto;
+  border: none;
   /* altura da linha */
   width: 2px;
   /* largura da linha */
@@ -1444,7 +1468,7 @@ textarea {
   text-align: center;
 }
 
-.dicas-muscle h1 {
+.dicas-muscle h2 {
   padding-top: 70px;
   font-size: 2rem;
   font-family: var(--font-grande);
@@ -1453,7 +1477,7 @@ textarea {
   letter-spacing: 0px;
 }
 
-.dicas-muscle h2 {
+.dicas-muscle .subtitulo {
   padding: 20px;
   font-size: 1.5rem;
   color: var(--color-esmerald);
@@ -1526,14 +1550,13 @@ option {
 
 }
 
-.secao-imc h1 {
+.secao-imc h2 {
   font-family: var(--font-grande);
   padding-bottom: 50px;
   text-transform: uppercase;
   width: 60%;
   text-align: center;
   font-size: 1.3rem;
-  text-transform: uppercase;
   font-weight: 600;
 }
 
@@ -1555,13 +1578,16 @@ option {
 
 }
 
+/* Título da calculadora IMC.
+   Atenção: também pega os <span class="title"> vazios das caixas da consultoria
+   (desenha a barra preta no topo e define a altura das caixas, que as .linha1-4 usam). */
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 50px;
-  font: bold 2rem serif;
+  font: 600 2rem var(--font-grande);
   border-bottom: solid 5px black;
   margin-bottom: 20px;
 }
@@ -1580,24 +1606,40 @@ option {
   border-radius: 5px;
   border: none;
   outline: 0;
-  font: bold 1.5rem serif;
+  font: 600 1.5rem var(--font-grande);
   text-align: center;
   color: #000;
 }
 
 .input label {
-  font: bold 1.5rem serif;
+  font: 600 1.5rem var(--font-grande);
+}
+
+/* Texto escuro sobre o fundo claro da calculadora (o * global deixava branco, com pouco contraste) */
+.container-imc .title,
+.container-imc label {
+  color: var(--color-black);
 }
 
 .secao-imc button {
   width: 300px;
   height: 40px;
-  font: bold 1.2rem serif;
+  font: 600 1.2rem var(--font-grande);
   background: #000;
   color: var(--color-esmerald);
   outline: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.secao-imc button:hover {
+  background: var(--color-esmerald);
+  color: var(--color-black);
+}
+
+.secao-imc button:active {
+  scale: 0.98;
 }
 
 .result {
@@ -1607,7 +1649,9 @@ option {
   width: 300px;
   height: 150px;
   border-radius: 5px;
-  font: italic 1.5rem serif;
+  font: 600 1.2rem var(--font-grande);
+  /* Mesma tipografia do restante da calculadora */
+  line-height: 1.4;
   box-shadow: 0px 0px 10px black;
   background: #000;
   color: var(--color-destaque1);
@@ -1641,7 +1685,10 @@ option {
 
 }
 
-div .faq p {
+/* Título "Ainda com dúvidas?" (h2; mesma aparência do antigo <p>) */
+div .faq h2 {
+  display: flex;
+  font-family: var(--font-pequena);
   left: 0;
   transform: translateX(25%);
   color: var(--color-esmerald);
@@ -1658,7 +1705,6 @@ div .faq p {
   font-size: 1.1rem;
   font-family: var(--font-pequena);
   font-weight: 600;
-  color: var(--color-destaque1);
   padding: 0px;
   gap: 5px;
   /*espaçamento entre span e p*/
@@ -1697,10 +1743,6 @@ div .faq p {
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s ease;
-}
-
-.read-more:hover {
-  background: transparent;
 }
 
 .post-content {
@@ -1767,6 +1809,8 @@ div .faq p {
   width: 50px;
   height: 50px;
   border-radius: 50px;
+  border: none;
+  padding: 0;
   background-color: var(--color-white);
   color: var(--color-black);
   cursor: pointer;
@@ -1788,16 +1832,11 @@ div .faq p {
   transform: scale(1.1);
 }
 
-#backUpButton i {
-  color: #00d0ff;
-}
-
 #btnWhats {
   bottom: 20px;
   right: 20px;
   background-color: #25D366;
   box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
-  animation: pulse 2s infinite;
 }
 
 #btnWhats:hover {
@@ -1813,8 +1852,27 @@ div .faq p {
 /* Telas grandes (desktops) - ajustes finos */
 @media (min-width: 1024px) and (max-width: 1440px) {
 
-  .secao-1 h1 {
-    font-size: 1.2rem;
+  /* Menos margem no menu para caberem os 5 links sem espremer o logo */
+  .menu-navegacao {
+    margin: 60px 20px;
+  }
+
+  /* Texto do topo não encosta na borda da tela */
+  #img-secao {
+    padding: 0 24px;
+  }
+
+  /* Mantém o h1 maior que o subtítulo */
+  .txt-topo h1 {
+    font-size: 2rem;
+  }
+
+  .txt-topo h2 {
+    font-size: 1.25rem;
+  }
+
+  .modal .titulo-modal {
+    font-size: 1.6rem;
   }
 
   .modal {
@@ -1822,7 +1880,7 @@ div .faq p {
     height: auto;
   }
 
-  .secao-2 h1 {
+  .secao-2 h2 {
     font-size: 2.2rem;
   }
 
@@ -1837,10 +1895,10 @@ div .faq p {
     width: 85%;
   }
 
-  .txt-pilha1 h1,
-  .txt-pilha2 h1,
-  .txt-pilha3 h1,
-  .txt-pilha4 h1 {
+  .txt-pilha1 h3,
+  .txt-pilha2 h3,
+  .txt-pilha3 h3,
+  .txt-pilha4 h3 {
     font-size: 1.4rem;
   }
 
@@ -1864,11 +1922,11 @@ div .faq p {
   }
 
   /*S3*/
-  .secao-3 h1 {
+  .secao-3 h2 {
     font-size: 2.2rem;
   }
 
-  .secao-3 h2 {
+  .secao-3 .subtitulo {
     font-size: 1.2rem;
     padding: 0 0 1rem 0;
   }
@@ -1882,8 +1940,9 @@ div .faq p {
     font-size: 1.8rem;
   }
 
-  .secao-3 .box-consultoria h3 p {
-    font-size: 12px;
+  .secao-3 .box-consultoria div p {
+    font-size: 15px;
+    /* 12px ficava pequeno demais para leitura */
   }
 
   .box-consultoria {
@@ -1912,67 +1971,38 @@ div .faq p {
   }
 
   /*S-4*/
-  .logo h1 {
+  .logo h2 {
     font-size: 1.7rem;
   }
 
-  .logo h2 {
+  .logo h3 {
     font-size: 1.2rem;
   }
 
   .card-list ul li,
   .card-list-2 ul li {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .m2 {
     max-width: 100%;
   }
 
-  .secao-imc h1 {
+  .secao-imc h2 {
     font-size: 1rem;
-  }
-
-  .dicas-muscle h1 {
-    font-size: 1.3rem;
   }
 
   .dicas-muscle h2 {
+    font-size: 1.3rem;
+  }
+
+  .dicas-muscle .subtitulo {
     font-size: 1rem;
   }
 
-  .secao-imc p {
-    font-size: 1.5rem;
-  }
-
-  .img-footer img {
-    width: 100%;
-    /* Ocupa a largura disponível */
-    height: 60%;
-    /* Ocupa 60% da altura do pai */
-    object-fit: cover;
-    /* Recorta sem distorcer. */
-    margin-left: -10%;
-    display: block;
-    /* Remove espaços brancos extras abaixo da imagem */
-  }
-
-  div .faq p {
-    transform: translateX(25%);
-    color: var(--color-esmerald);
-    padding-bottom: 50px;
-    font-size: 1.3rem;
-    font-weight: 550;
-  }
-
-  .img-footer-pessoal img {
-    width: 90%;
-    height: 60%;
-    margin-left: 90px;
-  }
-
-  .geral-list p {
-    font-size: 11px;
+  /* Rodapé/FAQ: tamanhos definidos no bloco "PASSE VISUAL" no fim do arquivo */
+  div .faq h2 {
+    font-size: 1.6rem;
   }
 
   /* Ajustes da Seção IMC para Notebook */
@@ -2041,8 +2071,7 @@ div .faq p {
     margin: 20px 0;
   }
 
-  .menu-navegacao ul li {
-    display: flex;
+  .menu-navegacao ul {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
@@ -2100,8 +2129,9 @@ div .faq p {
     font-size: 0.95rem;
   }
 
-  .img-pessoal img {
-    width: 350px;
+  /* Em coluna o espaçador não é necessário */
+  .img-pessoal {
+    display: none;
   }
 
   .btn-secao-1 {
@@ -2125,7 +2155,7 @@ div .faq p {
     padding: 5rem 0 0;
   }
 
-  .txt-beneficios h1 {
+  .txt-beneficios h2 {
     font-size: 1.6rem;
   }
 
@@ -2268,11 +2298,11 @@ div .faq p {
     padding: 1.5rem 0 0;
   }
 
-  .secao-3 h1 {
+  .secao-3 h2 {
     font-size: 1.6rem;
   }
 
-  .secao-3 h2 {
+  .secao-3 .subtitulo {
     font-size: 0.95rem;
   }
 
@@ -2302,11 +2332,13 @@ div .faq p {
     font-size: 1.3rem;
     line-height: 1.8rem;
     margin-left: 0;
+    width: auto;
     text-align: center;
   }
 
   .container-consul .box div p {
     font-size: 0.75rem;
+    margin-left: 0;
     text-align: center;
   }
 
@@ -2319,14 +2351,14 @@ div .faq p {
 
   /* Prós e Contras */
   .secao-4 {
-    margin-top: -200px;
-  }
-
-  .secao-4 h1 {
-    font-size: 1.3rem;
+    margin-top: 0;
   }
 
   .secao-4 h2 {
+    font-size: 1.3rem;
+  }
+
+  .secao-4 h3 {
     font-size: 1rem;
   }
 
@@ -2368,11 +2400,11 @@ div .faq p {
     flex-direction: column;
   }
 
-  .dicas-muscle h1 {
+  .dicas-muscle h2 {
     font-size: 1.1rem;
   }
 
-  .dicas-muscle h2 {
+  .dicas-muscle .subtitulo {
     font-size: 0.85rem;
     padding: 15px;
   }
@@ -2393,7 +2425,7 @@ div .faq p {
     padding: 40px 20px;
   }
 
-  .secao-imc h1 {
+  .secao-imc h2 {
     font-size: 1.1rem;
     width: 90%;
     padding-bottom: 30px;
@@ -2457,7 +2489,8 @@ div .faq p {
     margin-bottom: 2rem;
   }
 
-  div .faq p {
+  div .faq h2 {
+    justify-content: center;
     font-size: 1.3rem;
     left: 0;
     transform: translateX(0);
@@ -2564,7 +2597,7 @@ div .faq p {
 
   }
 
-  .menu-navegacao ul li {
+  .menu-navegacao ul {
     flex-direction: column;
     gap: 8px;
   }
@@ -2599,14 +2632,9 @@ div .faq p {
 
   }
 
-  .menu-lateral i {
-    font-size: 30px;
-    padding: 20px;
-    position: relative;
-    top: 40vh;
-    left: 35%;
-    transform: translateX(-50%);
-
+  /* Ícone do Instagram: posição definida em .menu-lateral-social (antes usava top: 40vh) */
+  .menu-lateral-social i {
+    font-size: 22px;
   }
 
   .card {
@@ -2638,8 +2666,9 @@ div .faq p {
   }
 
   .txt-topo h1 {
-    font-size: 1rem;
-    line-height: 1;
+    font-size: 1.4rem;
+    /* Maior que o h2 e com respiro entre linhas */
+    line-height: 1.25;
   }
 
   .txt-topo h2 {
@@ -2651,13 +2680,10 @@ div .faq p {
     font-size: 0.9rem;
   }
 
-  .img-pessoal img {
-    width: 250px;
-    max-width: 100%;
-  }
-
   .btn-secao-1 {
     flex-direction: column;
+    align-items: center;
+    /* Centraliza com o texto do topo */
     display: flex;
     width: 100%;
     padding: 15px 50px;
@@ -2680,7 +2706,7 @@ div .faq p {
     min-height: auto;
   }
 
-  .modal h1 {
+  .modal .titulo-modal {
     font-size: 1.5rem;
     margin-bottom: 15px;
   }
@@ -2725,7 +2751,7 @@ div .faq p {
     margin-bottom: 1.5rem;
   }
 
-  .txt-beneficios h1 {
+  .txt-beneficios h2 {
     font-size: 1.8rem;
     line-height: 1.2;
     margin-bottom: 0.5rem;
@@ -2738,6 +2764,33 @@ div .faq p {
 
   .pilares {
     display: flex;
+    padding: 0.5rem 0;
+    overflow: visible;
+  }
+
+  /* Pilares empilhados em coluna (antes só abaixo de 480px; entre 481 e 768px o texto ficava sobre o círculo) */
+  .circle-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    transform: none;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .central-circle {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    margin-bottom: 15px;
   }
 
   /* ZONA 1: Lado Esquerdo (Pilares 1 e 2 + Seus Textos) */
@@ -2768,8 +2821,9 @@ div .faq p {
 
   .central-circle img {
     width: 100%;
+    max-width: 150px;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 50%;
   }
 
@@ -2813,10 +2867,10 @@ div .faq p {
     margin-bottom: 20px;
   }
 
-  .txt-pilha1 h1,
-  .txt-pilha2 h1,
-  .txt-pilha3 h1,
-  .txt-pilha4 h1 {
+  .txt-pilha1 h3,
+  .txt-pilha2 h3,
+  .txt-pilha3 h3,
+  .txt-pilha4 h3 {
     font-size: 0.95rem;
     margin-bottom: 0.3rem;
   }
@@ -2825,8 +2879,8 @@ div .faq p {
   .txt-pilha2 p,
   .txt-pilha3 p,
   .txt-pilha4 p {
-    font-size: 0.7rem;
-    line-height: 1.2;
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 
   .linha-bene1,
@@ -2836,17 +2890,17 @@ div .faq p {
     display: none;
   }
 
-  .circle-container h1 {
+  .circle-container h3 {
     font-size: 1rem;
   }
 
   /* Seção Consultoria */
-  .secao-3 h1 {
+  .secao-3 h2 {
     font-size: 2rem;
     padding-top: 40px;
   }
 
-  .secao-3 h2 {
+  .secao-3 .subtitulo {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
@@ -2884,15 +2938,15 @@ div .faq p {
 
   /* Seção 4 */
   .secao-4 {
-    padding: 10rem 1rem 0;
+    padding: var(--espaco-secao) 1rem 0;
   }
 
-  .secao-4 h1 {
+  .secao-4 h2 {
     font-size: 1.7rem;
     line-height: 1.3;
   }
 
-  .secao-4 h2 {
+  .secao-4 h3 {
     font-size: 1.3rem;
   }
 
@@ -2902,7 +2956,7 @@ div .faq p {
     margin: 0 auto;
   }
 
-  .m2 .logo h1 {
+  .m2 .logo h2 {
     font-size: 1.5rem;
     line-height: 1.4;
   }
@@ -2918,8 +2972,8 @@ div .faq p {
     max-width: 100%;
   }
 
-  .card-content h2,
-  .card-content-2 h2 {
+  .card-content h3,
+  .card-content-2 h3 {
     font-size: 1.3rem;
     margin-bottom: 15px;
   }
@@ -2946,13 +3000,13 @@ div .faq p {
     width: 100%;
   }
 
-  .dicas-muscle h1 {
+  .dicas-muscle h2 {
     font-size: 1.4rem;
     padding-top: 30px;
     line-height: 1.3;
   }
 
-  .dicas-muscle h2 {
+  .dicas-muscle .subtitulo {
     font-size: 1rem;
     padding: 12px;
   }
@@ -2992,7 +3046,7 @@ div .faq p {
     width: 100%;
   }
 
-  .secao-imc h1 {
+  .secao-imc h2 {
     font-size: 1rem;
     width: 100%;
     padding-bottom: 25px;
@@ -3055,7 +3109,7 @@ div .faq p {
     max-width: 250px;
   }
 
-  div .faq p {
+  div .faq h2 {
     font-size: 1.4rem;
   }
 
@@ -3070,6 +3124,16 @@ div .faq p {
 
   .post-summary {
     white-space: normal;
+  }
+
+  /* Número e pergunta na mesma linha, sem quebrar o "03." sozinho */
+  .geral-list .post-summary {
+    display: block;
+    text-align: center;
+  }
+
+  .post-summary span {
+    margin-right: 5px;
   }
 
   .linha-h {
@@ -3172,10 +3236,6 @@ div .faq p {
     font-size: 0.85rem;
   }
 
-  .img-pessoal img {
-    width: 200px;
-  }
-
   .animated-button {
     display: flex;
     align-items: center;
@@ -3193,7 +3253,7 @@ div .faq p {
     padding: 25px 15px;
   }
 
-  .modal h1 {
+  .modal .titulo-modal {
     font-size: 1.3rem;
   }
 
@@ -3215,7 +3275,7 @@ div .faq p {
     margin-bottom: 1rem;
   }
 
-  .txt-beneficios h1 {
+  .txt-beneficios h2 {
     font-size: 1.99rem;
     line-height: 1.2;
     margin-bottom: 0.3rem;
@@ -3303,10 +3363,10 @@ div .faq p {
     margin-bottom: 15px;
   }
 
-  .txt-pilha1 h1,
-  .txt-pilha2 h1,
-  .txt-pilha3 h1,
-  .txt-pilha4 h1 {
+  .txt-pilha1 h3,
+  .txt-pilha2 h3,
+  .txt-pilha3 h3,
+  .txt-pilha4 h3 {
     font-size: 0.85rem;
     margin-bottom: 0.2rem;
   }
@@ -3315,21 +3375,21 @@ div .faq p {
   .txt-pilha2 p,
   .txt-pilha3 p,
   .txt-pilha4 p {
-    font-size: 0.65rem;
-    line-height: 1.2;
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 
-  .circle-container h1 {
+  .circle-container h3 {
     font-size: 0.9rem;
   }
 
   /* Seção Consultoria */
-  .secao-3 h1 {
+  .secao-3 h2 {
     font-size: 1.7rem;
     padding-top: 30px;
   }
 
-  .secao-3 h2 {
+  .secao-3 .subtitulo {
     font-size: 1rem;
   }
 
@@ -3344,23 +3404,23 @@ div .faq p {
 
   /* Seção 4 */
   .secao-4 {
-    padding-top: 20rem;
-  }
-
-  .secao-4 h1 {
-    font-size: 1.5rem;
+    padding-top: var(--espaco-secao);
   }
 
   .secao-4 h2 {
+    font-size: 1.5rem;
+  }
+
+  .secao-4 h3 {
     font-size: 1.2rem;
   }
 
-  .m2 .logo h1 {
+  .m2 .logo h2 {
     font-size: 1.3rem;
   }
 
-  .card-content h2,
-  .card-content-2 h2 {
+  .card-content h3,
+  .card-content-2 h3 {
     font-size: 1.1rem;
   }
 
@@ -3375,11 +3435,11 @@ div .faq p {
     margin-top: 100px;
   }
 
-  .dicas-muscle h1 {
+  .dicas-muscle h2 {
     font-size: 1.2rem;
   }
 
-  .dicas-muscle h2 {
+  .dicas-muscle .subtitulo {
     font-size: 0.9rem;
   }
 
@@ -3390,7 +3450,7 @@ div .faq p {
     font-size: 0.85rem;
   }
 
-  .secao-imc h1 {
+  .secao-imc h2 {
     font-size: 0.9rem;
   }
 
@@ -3427,10 +3487,6 @@ div .faq p {
     max-width: 200px;
   }
 
-  .faq p {
-    font-size: 1.5rem;
-  }
-
   .geral-list p {
     font-size: 0.85rem;
   }
@@ -3441,8 +3497,9 @@ div .faq p {
 
   /* Botões fixos */
   .button-fixed {
-    width: 40px;
-    height: 40px;
+    /* Mínimo de 44px para toque */
+    width: 44px;
+    height: 44px;
   }
 
   #BackUpButton {
@@ -3457,5 +3514,1279 @@ div .faq p {
 
   #btnWhats i {
     font-size: 16px;
+  }
+}
+
+/* Acessibilidade: contorno visível ao navegar pelo teclado */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+.input input:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--color-esmerald);
+  outline-offset: 3px;
+}
+
+
+/*******COMPONENTES DE CONVERSÃO (CTAs, PLANOS, RODAPÉ)******/
+
+/* Topo: chamada curta acima do título */
+.txt-topo .tag-topo {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 14px;
+  border: 1px solid var(--color-esmerald);
+  border-radius: 100px;
+  font-family: var(--font-grande);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-esmerald);
+}
+
+/* Topo: três destaques do serviço */
+.destaques-topo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 14px 0;
+  list-style: none;
+  font-family: var(--font-grande);
+  font-weight: 600;
+}
+
+.destaques-topo li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.destaques-topo i {
+  color: var(--color-esmerald);
+}
+
+/* Topo: botão principal preenchido (WhatsApp) */
+.animated-button.btn-principal {
+  background-color: var(--color-esmerald);
+  color: var(--color-black);
+}
+
+.animated-button.btn-principal .text {
+  color: var(--color-black);
+}
+
+.animated-button.btn-principal svg {
+  fill: var(--color-black);
+}
+
+.animated-button.btn-principal .circle {
+  background-color: var(--color-white);
+}
+
+/* Bloco de CTA no fim das seções e das ferramentas */
+.cta-secao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 50px auto 0;
+  padding: 0 16px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.cta-secao[hidden] {
+  display: none;
+}
+
+.cta-secao p {
+  display: block;
+  flex: none;
+  color: var(--color-white);
+  font-family: var(--font-grande);
+  font-size: 1.1rem;
+  font-weight: 600;
+  white-space: normal;
+}
+
+/* Botão de WhatsApp reutilizável (planos, seções, ferramentas, FAQ) */
+.cta-whats {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  background: var(--color-esmerald);
+  color: var(--color-black);
+  font-family: var(--font-grande);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-whats i {
+  color: var(--color-black);
+  font-size: 1.2rem;
+}
+
+.cta-whats:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(6, 214, 160, 0.35);
+}
+
+/* Planos */
+.planos {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 16px 0;
+  text-align: center;
+  font-family: var(--font-grande);
+}
+
+.planos h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.planos .subtitulo {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: var(--color-esmerald);
+}
+
+.planos-incluso {
+  margin: 40px auto;
+  padding: 24px;
+  max-width: 800px;
+  border: 1px solid rgba(6, 214, 160, 0.4);
+  border-radius: 15px;
+}
+
+.planos-incluso h3 {
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+
+.planos-incluso ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px 20px;
+  list-style: none;
+  text-align: left;
+}
+
+.planos-incluso li,
+.destaques-topo li {
+  font-family: var(--font-pequena);
+}
+
+.planos-incluso i {
+  margin-right: 8px;
+  color: var(--color-esmerald);
+}
+
+.planos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  list-style: none;
+}
+
+.plano-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 32px 24px;
+  border: 1px solid var(--color-destaque1);
+  border-radius: 15px;
+  background: rgba(119, 168, 168, 0.08);
+}
+
+.plano-card h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.plano-card p {
+  flex: 1;
+  font-family: var(--font-pequena);
+  line-height: 1.5;
+}
+
+.plano-destaque {
+  border: 2px solid var(--color-esmerald);
+}
+
+.plano-selo {
+  position: absolute;
+  top: -14px;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: var(--color-esmerald);
+  color: var(--color-black);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* FAQ: o texto da pergunta também abre a resposta */
+.pergunta-clicavel {
+  cursor: pointer;
+}
+
+.cta-faq {
+  margin-top: 30px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0;
+}
+
+/* Rodapé: links e contatos */
+.rodape-contato {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 5%;
+  font-family: var(--font-grande);
+}
+
+.rodape-links,
+.rodape-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  list-style: none;
+}
+
+.rodape-links a,
+.rodape-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 8px;
+  text-decoration: none;
+}
+
+.rodape-links a:hover,
+.rodape-social a:hover,
+.rodape-social i {
+  color: var(--color-esmerald);
+}
+
+/* Áreas de toque das ferramentas e do FAQ com no mínimo 44px */
+#muscle,
+#load,
+.secao-imc button,
+.read-more,
+.read-more-2,
+.read-more-3,
+.read-more-4 {
+  min-height: 44px;
+}
+
+/* Créditos com respiro lateral */
+.credenciais p {
+  padding: 0 16px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .txt-topo .tag-topo {
+    font-size: 0.75rem;
+  }
+
+  /* Foto um pouco menor no topo para os botões aparecerem sem rolar */
+  .txt-topo {
+    margin-top: min(55%, 21rem);
+  }
+
+  /* Espaço para os botões flutuantes não cobrirem os créditos */
+  .credenciais {
+    padding-bottom: 70px;
+  }
+
+  .destaques-topo {
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  .planos h2 {
+    font-size: 1.8rem;
+  }
+
+  .planos .subtitulo {
+    font-size: 1rem;
+  }
+
+  .rodape-contato {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rodape-links,
+  .rodape-social {
+    justify-content: center;
+  }
+
+  .cta-faq {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .txt-topo .tag-topo {
+    font-size: 0.7rem;
+    letter-spacing: 0;
+  }
+
+  .destaques-topo {
+    gap: 6px 14px;
+  }
+}
+
+
+/*******PASSE VISUAL (sistema de botões, cards, ritmo das seções)******/
+
+/* ---------- Títulos das seções: mesma escala e um traço de destaque ---------- */
+.txt-beneficios h2,
+.secao-3>h2,
+.planos>h2 {
+  font-size: clamp(1.9rem, 1.2rem + 2.4vw, 2.9rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.dicas-muscle>h2 {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.9rem);
+  line-height: 1.25;
+}
+
+.txt-beneficios h2::after,
+.secao-3>h2::after,
+.planos>h2::after,
+.dicas-muscle>h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: var(--raio-pill);
+  background: var(--color-esmerald);
+}
+
+/* ---------- Topo ---------- */
+.txt-topo h1 {
+  font-size: clamp(1.6rem, 1rem + 2.2vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+}
+
+.txt-topo h2 {
+  line-height: 1.45;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.85);
+}
+
+.txt-topo p {
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+}
+
+.txt-topo .tag-topo {
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  background: rgba(0, 0, 0, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  font-weight: 600;
+  text-shadow: none;
+}
+
+/* Destaques em "pílulas": quando quebram em 2 linhas continuam organizados */
+.destaques-topo {
+  gap: 10px;
+  margin: 20px 0 18px;
+}
+
+.destaques-topo li {
+  padding: 6px 14px 6px 10px;
+  border: 1px solid rgba(6, 214, 160, 0.35);
+  border-radius: var(--raio-pill);
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.destaques-topo i {
+  font-size: 1rem;
+}
+
+.btn-secao-1 {
+  padding: 22px 0 0;
+  gap: 14px;
+}
+
+/* ---------- Sistema de botões ----------
+   Principal: pílula esmeralda preenchida, texto preto (.btn-principal, .cta-whats)
+   Secundário: pílula com contorno esmeralda, texto claro (.animated-button, .cta-secundario) */
+.animated-button {
+  min-height: 52px;
+  color: var(--color-white);
+  font-family: var(--font-grande);
+  font-size: 1rem;
+  box-shadow: 0 0 0 2px var(--color-esmerald);
+}
+
+.animated-button:hover {
+  border-radius: var(--raio-pill);
+  /* mantém a pílula: mesmo formato do .cta-whats */
+  box-shadow: 0 0 0 2px var(--color-esmerald), var(--sombra-brilho);
+}
+
+/* O círculo do hover cobre também os botões mais largos */
+.animated-button:hover .circle {
+  width: 420px;
+  height: 420px;
+}
+
+/* Principal: no hover o preenchimento escurece um pouco (antes um círculo branco cobria o verde) */
+.animated-button.btn-principal {
+  box-shadow: 0 0 0 2px var(--color-esmerald), 0 8px 24px rgba(6, 214, 160, 0.25);
+}
+
+.animated-button.btn-principal .circle {
+  background-color: var(--color-esmerald-escuro);
+}
+
+.animated-button.btn-principal:hover {
+  box-shadow: 0 0 0 2px var(--color-esmerald-escuro), var(--sombra-brilho);
+}
+
+.cta-whats {
+  min-height: 48px;
+  padding: 12px 26px;
+  border: none;
+  font-size: 1rem;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(6, 214, 160, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.cta-whats:hover {
+  background-color: var(--color-esmerald-escuro);
+  box-shadow: var(--sombra-brilho);
+}
+
+.cta-whats:active {
+  transform: translateY(0);
+}
+
+/* Secundário (contorno). Nos planos Mensal/Trimestral também, para o destaque ficar no plano recomendado */
+.cta-secundario,
+.plano-card:not(.plano-destaque) .cta-whats {
+  background: transparent;
+  color: var(--color-white);
+  box-shadow: inset 0 0 0 2px var(--color-esmerald);
+}
+
+.cta-secundario i,
+.plano-card:not(.plano-destaque) .cta-whats i {
+  color: var(--color-esmerald);
+}
+
+.cta-secundario:hover,
+.plano-card:not(.plano-destaque) .cta-whats:hover {
+  background: var(--color-esmerald);
+  color: var(--color-black);
+  box-shadow: inset 0 0 0 2px var(--color-esmerald), var(--sombra-brilho);
+}
+
+.cta-secundario:hover i,
+.plano-card:not(.plano-destaque) .cta-whats:hover i {
+  color: var(--color-black);
+}
+
+/* ENVIAR do formulário usa o botão principal */
+#enviar {
+  min-width: 160px;
+  letter-spacing: 0.06em;
+}
+
+/* Menu mobile em coluna: as redes ficam presas no rodapé do menu */
+.menu-lateral {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+/* Menu mobile: WhatsApp e Instagram lado a lado */
+.menu-lateral-redes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: auto 0 0;
+  padding: 24px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Botões flutuantes somem com o menu aberto (não ficam sobre os ícones do rodapé);
+   !important porque o Buttons.js controla a exibição por estilo inline */
+body.menu-open .button-fixed {
+  visibility: hidden !important;
+}
+
+/* Botões flutuantes somem com o menu aberto (não ficam sobre os ícones do rodapé);
+   !important porque o Buttons.js controla a exibição por estilo inline */
+body.menu-open .button-fixed {
+  visibility: hidden !important;
+}
+
+.menu-lateral-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(6, 214, 160, 0.5);
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.menu-lateral-social:hover {
+  background: rgba(6, 214, 160, 0.15);
+}
+
+/* Áreas de toque de 44px nos botões do menu, sem mudar o desenho das linhas */
+.hamburger-menu::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+}
+
+/* Hamburger fixo no mobile: acompanha a rolagem da tela */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    padding: 14px 12px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(6, 214, 160, 0.5);
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 998;
+  }
+
+  .hamburger-menu::before {
+    inset: 0;
+  }
+}
+
+.menu-close {
+  width: 44px;
+  height: 44px;
+  top: 16px;
+  right: 16px;
+}
+
+/* ---------- Benefícios ---------- */
+.circle-container h3 {
+  line-height: 1.25;
+}
+
+/* ---------- Consultoria: caixas como cards ---------- */
+.container-consul .box {
+  border-color: rgba(6, 214, 160, 0.55);
+  border-radius: var(--raio-card);
+  background: linear-gradient(135deg, rgba(119, 168, 168, 0.1), rgba(0, 0, 0, 0.35));
+  box-shadow: var(--sombra-card);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.container-consul .box:hover {
+  border-color: var(--color-esmerald);
+  box-shadow: var(--sombra-brilho);
+}
+
+.container-consul .box div h3 {
+  font-family: var(--font-grande);
+}
+
+.container-consul .box div p {
+  color: var(--color-texto-suave);
+  font-family: var(--font-grande);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.65;
+}
+
+/* Fotos sem distorção (antes eram esticadas para 500x380) */
+.box-consultoria img {
+  object-fit: cover;
+  border-radius: var(--raio-pequeno);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.secao-3 .cta-secao {
+  margin-top: 24px;
+}
+
+/* ---------- Comparação (.m2) ---------- */
+.m2 {
+  padding: 32px 20px;
+  border-radius: var(--raio-card);
+  box-shadow: var(--sombra-card);
+}
+
+.secao-4 h2 span {
+  color: var(--color-esmerald);
+}
+
+/* Cores explícitas dos títulos (antes vinham do gradiente de texto) */
+.card-content h3 {
+  color: #ff6b6b;
+}
+
+.card-content-2 h3 {
+  color: var(--color-esmerald);
+}
+
+.card-content ul li,
+.card-content-2 ul li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.card-content ul li {
+  color: var(--color-texto-suave);
+}
+
+/* ---------- Planos ---------- */
+.planos {
+  padding-top: var(--espaco-secao);
+}
+
+.planos .subtitulo {
+  margin: 14px auto 0;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.planos-incluso {
+  margin: 40px auto 48px;
+  padding: 28px 32px 32px;
+  border: 1px solid rgba(6, 214, 160, 0.35);
+  border-radius: var(--raio-card);
+  background: linear-gradient(135deg, rgba(6, 214, 160, 0.08), rgba(119, 168, 168, 0.04));
+}
+
+.planos-incluso h3 {
+  margin-bottom: 20px;
+  color: var(--color-esmerald);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.planos-incluso ul {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px 24px;
+}
+
+.planos-incluso li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.planos-incluso i {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.planos-lista {
+  gap: 24px;
+  align-items: stretch;
+}
+
+.plano-card {
+  gap: 16px;
+  padding: 40px 28px 32px;
+  border: 1px solid rgba(119, 168, 168, 0.45);
+  border-radius: var(--raio-card);
+  background: linear-gradient(180deg, rgba(119, 168, 168, 0.12), rgba(0, 0, 0, 0.35));
+  box-shadow: var(--sombra-card);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plano-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-esmerald);
+}
+
+.plano-card h3 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+/* Traço curto abaixo do nome do plano */
+.plano-card h3::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  margin: 12px auto 0;
+  border-radius: var(--raio-pill);
+  background: var(--color-esmerald);
+}
+
+.plano-card p {
+  color: var(--color-texto-suave);
+}
+
+.plano-card .cta-whats {
+  width: 100%;
+}
+
+.plano-destaque {
+  border: 2px solid var(--color-esmerald);
+  background: linear-gradient(180deg, rgba(6, 214, 160, 0.16), rgba(0, 0, 0, 0.35));
+  box-shadow: var(--sombra-brilho);
+}
+
+.plano-selo {
+  padding: 6px 16px;
+  font-family: var(--font-grande);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(6, 214, 160, 0.4);
+}
+
+/* ---------- Dicas e IMC ---------- */
+.secao-5 {
+  gap: 48px;
+  align-items: flex-start;
+  padding: var(--espaco-secao) 5% 0;
+}
+
+.dicas-muscle h2 {
+  padding-top: 0;
+}
+
+.dicas-muscle label {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px 6px;
+}
+
+#muscle {
+  width: auto;
+  min-width: 160px;
+  padding: 10px 14px;
+  border-radius: var(--raio-pequeno);
+  font-family: var(--font-grande);
+  font-weight: 600;
+  text-transform: none;
+}
+
+/* Carregar: botão secundário */
+#load {
+  width: auto;
+  padding: 0 24px;
+  border: 2px solid var(--color-esmerald);
+  border-radius: var(--raio-pill);
+  color: var(--color-white);
+  font-family: var(--font-grande);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#load:hover {
+  background: var(--color-esmerald);
+  color: var(--color-black);
+  box-shadow: none;
+}
+
+.grid {
+  gap: 20px;
+  padding-top: 36px;
+}
+
+.gif {
+  padding: 14px;
+  border-color: rgba(6, 214, 160, 0.4);
+  border-radius: var(--raio-card);
+  background: rgba(119, 168, 168, 0.06);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gif:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-esmerald);
+  box-shadow: var(--sombra-brilho);
+}
+
+.gif strong {
+  font-family: var(--font-grande);
+}
+
+.gif img {
+  object-fit: cover;
+  border-radius: var(--raio-pequeno);
+}
+
+.secao-imc {
+  padding-top: 0;
+}
+
+.container-imc {
+  border-radius: var(--raio-card);
+  background: linear-gradient(160deg, var(--color-destaque1), #5f9494);
+  box-shadow: var(--sombra-card), 0 0 0 1px rgba(6, 214, 160, 0.35);
+}
+
+.input input {
+  border-radius: 10px;
+}
+
+.secao-imc button {
+  border-radius: var(--raio-pill);
+}
+
+.result {
+  border-radius: var(--raio-pequeno);
+}
+
+/* ---------- FAQ: pergunta + seta lado a lado, em grade ---------- */
+.list-footer,
+.list-footer2,
+.list-footer3,
+.list-footer4 {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 16px;
+  padding: 12px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: left;
+}
+
+/* A borda do item substitui a linha absoluta */
+.linha-h {
+  display: none;
+}
+
+.geral-list .post-summary {
+  display: block;
+  margin: 0;
+  color: var(--color-white);
+  font-family: var(--font-grande);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  white-space: normal;
+  transition: color 0.2s ease;
+}
+
+.geral-list .post-summary:hover,
+.list-footer:has(.visible) .post-summary,
+.list-footer2:has(.visible) .post-summary,
+.list-footer3:has(.visible) .post-summary,
+.list-footer4:has(.visible) .post-summary {
+  color: var(--color-esmerald);
+}
+
+/* Número da pergunta (antes cinza #555353, sem contraste) */
+.post-summary span {
+  margin-right: 8px;
+  color: var(--color-esmerald);
+}
+
+.read-more,
+.read-more-2,
+.read-more-3,
+.read-more-4 {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(6, 214, 160, 0.45);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  transition: background-color 0.2s ease;
+}
+
+.read-more:hover,
+.read-more-2:hover,
+.read-more-3:hover,
+.read-more-4:hover {
+  background: rgba(6, 214, 160, 0.15);
+}
+
+.post-content {
+  grid-column: 1 / -1;
+  max-width: none;
+}
+
+.geral-list .post-content p {
+  display: block;
+  padding: 10px 0 6px;
+  color: var(--color-texto-suave);
+  font-family: var(--font-grande);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+div .faq h2 {
+  transform: none;
+  padding-bottom: 20px;
+}
+
+/* ---------- Rodapé ---------- */
+.img-footer-pessoal img {
+  object-fit: cover;
+  border-radius: var(--raio-card);
+  box-shadow: var(--sombra-card);
+}
+
+.credenciais {
+  border-top: 1px solid rgba(6, 214, 160, 0.18);
+  background: linear-gradient(to bottom, rgba(50, 113, 113, 0.25), rgba(0, 0, 0, 0.6));
+}
+
+.rodape-contato {
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.credenciais p {
+  color: var(--color-texto-suave);
+  font-family: var(--font-grande);
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Desktop: FAQ no centro, logo e foto nas laterais sem se espremerem */
+@media (min-width: 1025px) {
+  .footer {
+    gap: 48px;
+    align-items: flex-start;
+    justify-content: center;
+    padding: var(--espaco-secao) 5% 4rem;
+  }
+
+  .img-footer {
+    flex: 0 1 240px;
+    height: auto;
+  }
+
+  .img-footer img {
+    height: auto;
+  }
+
+  .geral-list {
+    flex: 1 1 520px;
+    max-width: 640px;
+  }
+
+  .img-footer-pessoal {
+    flex: 0 1 380px;
+    height: auto;
+    margin: 0;
+  }
+
+  .img-footer-pessoal img {
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* Notebooks estreitos (1025–1279px): 5 links no menu e pilares em volta do círculo */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .logo-topo img {
+    width: 190px;
+    margin: 30px 16px;
+  }
+
+  .menu-navegacao {
+    margin: 60px 8px;
+  }
+
+  .btn-contatos {
+    padding-right: 0;
+    margin: 30px 16px;
+  }
+
+  /* O desenho circular precisa de ~1260px: reduz o conjunto proporcionalmente
+     para os textos dos pilares não saírem da tela (rolagem lateral) */
+  .pilares {
+    zoom: 0.78;
+  }
+
+  /* Exercícios e IMC não cabem lado a lado: a calculadora desce */
+  .secao-5 {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pilares .txt-pilha1 p,
+  .pilares .txt-pilha2 p,
+  .pilares .txt-pilha3 p,
+  .pilares .txt-pilha4 p {
+    font-size: 16px;
+  }
+
+  .pilares .txt-pilha1 h3,
+  .pilares .txt-pilha2 h3,
+  .pilares .txt-pilha3 h3,
+  .pilares .txt-pilha4 h3 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1024px) {
+  .secao-5 {
+    align-items: center;
+  }
+
+  /* Sem as linhas .linha1-4 (ocultas aqui), a faixa vazia do topo das caixas não é necessária */
+  .container-consul .box .title {
+    display: none;
+  }
+
+  /* Rodapé em coluna: logo, FAQ e foto centralizados */
+  .footer {
+    align-items: center;
+    padding: var(--espaco-secao) 1rem 3rem;
+  }
+
+  .img-footer {
+    margin: 0 auto 1rem;
+  }
+
+  .geral-list {
+    max-width: 640px;
+  }
+}
+
+/* Planos lado a lado em telas médias: botões cabem em uma linha */
+@media (min-width: 901px) and (max-width: 1150px) {
+  .plano-card {
+    padding: 40px 18px 28px;
+  }
+
+  .plano-card .cta-whats {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+  }
+}
+
+/* Planos: abaixo de 900px os 3 cards não cabem lado a lado; em vez de 2 + 1 solto, uma coluna */
+@media (max-width: 900px) {
+  .planos-lista {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+}
+
+/* ---------- Celulares ---------- */
+@media (max-width: 768px) {
+
+  /* Topo: escurece mais a foto atrás do texto para leitura */
+  #img-secao {
+    background-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.85) 45%, rgba(0, 0, 0, 0.2) 75%, rgba(0, 0, 0, 0)),
+      url('/Assets/img-web/foto-pessoal.webp');
+  }
+
+  .btn-secao-1 {
+    padding: 18px 0 0;
+  }
+
+  .destaques-topo {
+    gap: 8px;
+  }
+
+  .destaques-topo li {
+    font-size: 0.85rem;
+  }
+
+  /* Pilares como cards empilhados (sem o padding lateral de 5rem do tablet, que estreitava o texto) */
+  .container-Beneficios {
+    padding: 0 16px;
+  }
+
+  .txt-beneficios p {
+    padding-bottom: 2.5rem;
+  }
+
+  .txt-pilha1,
+  .txt-pilha2,
+  .txt-pilha3,
+  .txt-pilha4 {
+    max-width: 440px;
+    padding: 18px 18px 20px;
+    border: 1px solid rgba(6, 214, 160, 0.25);
+    border-radius: var(--raio-card);
+    background: rgba(119, 168, 168, 0.08);
+  }
+
+  .txt-pilha1 h3,
+  .txt-pilha2 h3,
+  .txt-pilha3 h3,
+  .txt-pilha4 h3 {
+    padding: 0 0 6px;
+    font-size: 1.05rem;
+  }
+
+  .txt-pilha1 p,
+  .txt-pilha2 p,
+  .txt-pilha3 p,
+  .txt-pilha4 p {
+    color: var(--color-texto-suave);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  .circle-container .pillar {
+    margin-top: 14px;
+  }
+
+  .container-consul .box {
+    padding: 1.25rem;
+  }
+
+  .m2 {
+    padding: 24px 12px;
+  }
+
+  .planos-incluso {
+    padding: 24px 20px;
+  }
+
+  .plano-card {
+    padding: 36px 20px 24px;
+  }
+
+  /* Espaço para o selo do plano destaque */
+  .plano-destaque {
+    margin-top: 10px;
+  }
+
+  .plano-card:hover {
+    transform: none;
+  }
+
+  .secao-5 {
+    padding: var(--espaco-secao) 16px 0;
+  }
+
+  .geral-list .post-summary {
+    font-size: 1rem;
+  }
+
+  .geral-list .post-content p {
+    font-size: 0.95rem;
+  }
+
+  .credenciais p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dicas-muscle {
+    margin-top: 0;
+  }
+
+  /* Pílulas menores: 2 na primeira linha e 1 centralizada na segunda */
+  .destaques-topo {
+    gap: 6px;
+    margin: 14px 0 12px;
+  }
+
+  .destaques-topo li {
+    gap: 4px;
+    font-size: 0.75rem;
+    padding: 4px 10px 4px 8px;
+  }
+
+  .destaques-topo i {
+    font-size: 0.85rem;
+  }
+
+  .txt-topo h1 {
+    font-size: 1.45rem;
+    margin-bottom: 10px;
+  }
+
+  .txt-topo .tag-topo {
+    margin-bottom: 12px;
+  }
+
+  .txt-pilha1 h3,
+  .txt-pilha2 h3,
+  .txt-pilha3 h3,
+  .txt-pilha4 h3 {
+    font-size: 1rem;
+  }
+
+  .txt-pilha1 p,
+  .txt-pilha2 p,
+  .txt-pilha3 p,
+  .txt-pilha4 p {
+    font-size: 0.875rem;
+  }
+}
+
+/* Movimento reduzido: sem animações contínuas, deslocamentos ou transições longas */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .plano-card:hover,
+  .gif:hover,
+  .cta-whats:hover {
+    transform: none;
   }
 }

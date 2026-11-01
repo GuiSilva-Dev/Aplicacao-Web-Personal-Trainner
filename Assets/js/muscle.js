@@ -19,7 +19,7 @@ const exercises = {
   triceps: [
     { name: "Tríceps pulley", img: "https://media.tenor.com/GpvUxIvyOZ0AAAAM/tr%C3%ADceps-pulley-corda.gif" },
     { name: "Mergulho em banco", img: "https://www.mundoboaforma.com.br/wp-content/uploads/2021/04/triceps-no-banco.gif" },
-    { name: "Tricéps testa", img: "https://i.pinimg.com/originals/e1/cb/f3/e1cbf337b41701d1c91e7ed4354542f2.gif" }
+    { name: "Tríceps testa", img: "https://i.pinimg.com/originals/e1/cb/f3/e1cbf337b41701d1c91e7ed4354542f2.gif" }
   ],
   legs: [
     { name: "Agachamento", img: "https://www.hipertrofia.org/blog/wp-content/uploads/2017/11/smith-full-squat.gif" },
@@ -29,12 +29,12 @@ const exercises = {
   shoulders: [
     { name: "Elevação lateral", img: "https://www.hipertrofia.org/blog/wp-content/uploads/2023/11/dumbbell-lateral-raise.gif" },
     { name: "Desenvolvimento com halteres", img: "https://image.tuasaude.com/media/article/ne/ga/exercicio-para-ombro_73965.gif?width=686&height=487" },
-    { name: "Desenvolvimento com halteres", img: "https://www.hipertrofia.org/blog/wp-content/uploads/2024/05/Face-Pull.gif" }
+    { name: "Face pull", img: "https://www.hipertrofia.org/blog/wp-content/uploads/2024/05/Face-Pull.gif" }
   ],
   abs: [
     { name: "Abdominal crunch", img: "https://www.hipertrofia.org/blog/wp-content/uploads/2017/09/abdominal-remador.gif" },
     { name: "Prancha", img: "https://i.pinimg.com/736x/6b/4c/96/6b4c966a7df06403f18fdf05385563aa.jpg" },
-    { name: "elevação de pernas", img: "https://www.hipertrofia.org/blog/wp-content/uploads/2017/09/captains-chair-straight-leg-raise.gif" }
+    { name: "Elevação de pernas", img: "https://www.hipertrofia.org/blog/wp-content/uploads/2017/09/captains-chair-straight-leg-raise.gif" }
 
   ]
 
@@ -46,6 +46,8 @@ const select = document.getElementById('muscle');
 
 // Exibe os exercícios selecionados
 function showExercises(muscle) {
+  if (!listEl) return;
+
   const arr = exercises[muscle];
   if (!arr || arr.length === 0) {
     listEl.innerHTML = "Nenhum exercício encontrado para esse músculo.";
@@ -55,13 +57,19 @@ function showExercises(muscle) {
   listEl.innerHTML = arr.map(e => `
     <div class="gif">
       <strong>${e.name}</strong><br/>
-      ${e.img ? `<img src="${e.img}" alt="${e.name}"/>` : ''}
+      ${e.img ? `<img src="${e.img}" alt="${e.name}" loading="lazy" decoding="async"/>` : ''}
     </div>
   `).join('');
 }
 
-// Carrega os exercícios selecionados
-btn.addEventListener('click', () => showExercises(select.value));
+if (select) {
+  // Carrega os exercícios selecionados
+  if (btn) btn.addEventListener('click', () => showExercises(select.value));
 
-// Exibe o grupo inicial
-showExercises(select.value); 
+  // Atualiza direto ao trocar o grupo muscular, sem precisar clicar em Carregar
+  select.addEventListener('change', () => showExercises(select.value));
+
+  // Exibe o grupo inicial
+  showExercises(select.value);
+}
+ 

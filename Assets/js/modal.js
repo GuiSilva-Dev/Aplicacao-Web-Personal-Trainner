@@ -1,32 +1,77 @@
+const modal = document.getElementById('modal-container')
+let ultimoFoco = null // elemento que abriu o modal, para devolver o foco ao fechar
+
 function openModal() {
-    const modal = document.getElementById('modal-container')
+    ultimoFoco = document.activeElement
     modal.classList.add('mostrar')
 
-    modal.addEventListener('click', (e) => {
-        if (e.target.id == 'modal-container' || e.target.id == "fechar") {
-            modal.classList.remove('mostrar')
-            localStorage.fechaModal = 'modal-container'
-        }
-    })
+    // Foca o primeiro campo para o usuário já começar a digitar
+    const primeiroCampo = modal.querySelector('input')
+    if (primeiroCampo) {
+        setTimeout(() => primeiroCampo.focus(), 50)
+    }
 }
 
+function closeModal() {
+    modal.classList.remove('mostrar')
+    localStorage.fechaModal = 'modal-container'
+    if (ultimoFoco) {
+        ultimoFoco.focus()
+    }
+}
 
-// Destaque dos campos do formulário
+// Fecha ao clicar fora ou no botão X (registrado uma única vez)
+modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.closest('#fechar')) {
+        closeModal()
+    }
+})
+
+// Fecha com Escape e mantém o Tab dentro do modal
+document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('mostrar')) return
+
+    if (e.key === 'Escape') {
+        closeModal()
+    }
+
+    if (e.key === 'Tab') {
+        const focaveis = modal.querySelectorAll('button:not([disabled]), input, textarea')
+        const primeiro = focaveis[0]
+        const ultimo = focaveis[focaveis.length - 1]
+
+        if (e.shiftKey && document.activeElement === primeiro) {
+            e.preventDefault()
+            ultimo.focus()
+        } else if (!e.shiftKey && document.activeElement === ultimo) {
+            e.preventDefault()
+            primeiro.focus()
+        }
+    }
+})
+
+
+// Validação dos campos do formulário (as cores de foco/erro ficam no style.css)
 const buttonSent = document.getElementById('enviar')
-const campos = document.querySelectorAll("form input, form textarea");
+const formContato = buttonSent.closest('form')
+const campos = formContato.querySelectorAll('input, textarea')
+
+// Libera o botão ENVIAR só quando todos os campos estiverem válidos
+function validarFormulario() {
+    buttonSent.disabled = !formContato.checkValidity()
+}
 
 campos.forEach(campo => {
-    campo.addEventListener("focus", () => {
-        campo.style.border = "2px solid #06d6a0";
-        campo.style.outline = "none"; // tira o contorno padrão
-    });
-
-    campo.addEventListener("blur", () => {
-        if (campo.value.trim() === "" ) { // verifica se o campo está vazio ou se é um número
-        campo.style.border = "1px solid #e20808"; // volta ao normal
+    // Ao sair do campo: marca como inválido se estiver vazio ou errado (ex: e-mail)
+    campo.addEventListener('blur', () => {
+        if (!campo.checkValidity()) {
+            campo.setAttribute('aria-invalid', 'true')
         } else {
-        campo.style.border = "1px solid #ccc"; // volta ao normal
-        } 
-    });
-});
+            campo.removeAttribute('aria-invalid')
+        }
+    })
 
+    campo.addEventListener('input', validarFormulario)
+})
+
+validarFormulario()
